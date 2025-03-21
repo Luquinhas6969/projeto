@@ -1,0 +1,12 @@
+body {
+    background-color:rgb(46, 59, 243);
+    border: 0.5rem outset rgb(17, 10, 121);
+    outline: 0.5rem solid rgb(9, 11, 131);
+    box-shadow: 0 0 0 2rem rgb(4, 55, 75);
+    width: 600px;
+    height: 800px;
+    padding: 0 200px 1000px 1070px    
+}
+#banner {
+
+}
