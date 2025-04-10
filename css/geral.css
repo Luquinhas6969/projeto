@@ -1,0 +1,64 @@
+#corpo {
+    border: 3px solid black;
+    width: auto;
+    height: auto;
+}
+
+
+
+
+#topo  {
+
+
+
+
+border: 3px solid blue;
+width: auto;
+height: 100px;
+}
+
+
+
+
+#conteudo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+
+#centro {
+border: 3px solid yellow;
+width: 1000px;
+height: 750px;
+}
+
+
+
+
+#direita {
+border: 3px solid red;
+width: 450px;
+height: 750px;
+}
+
+
+
+
+#esquerda {
+border: 3px solid black;
+width: 450px;
+height: 750px;
+}
+
+
+
+
+#rodape {
+border: 3px solid green;
+width: auto;
+height: 50px;
+display: flex;
+}
