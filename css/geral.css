@@ -4,21 +4,38 @@
     height: auto;
 }
 
-
-
-
-#topo  {
-
-
-
-
-border: 3px solid blue;
-width: auto;
-height: 100px;
+#topo {
+    border: 3px solid blue;
+    width: auto;
+    height: 100px;
 }
 
+#menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #444;
+    height: 60px;
+    color: white;
+    border: 3px solid gray;
+}
 
+#menu div {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+}
 
+#menu div a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#menu div:hover {
+    background-color: #666;
+}
 
 #conteudo {
     display: flex;
@@ -26,39 +43,40 @@ height: 100px;
     width: 100%;
 }
 
-
-
-
 #centro {
-border: 3px solid yellow;
-width: 1000px;
-height: 750px;
+    border: 3px solid yellow;
+    width: 1000px;
+    height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
 }
-
-
-
 
 #direita {
-border: 3px solid red;
-width: 450px;
-height: 750px;
+    border: 3px solid red;
+    width: 450px;
+    height: 750px;
+    padding: 10px;
+    box-sizing: border-box;
 }
-
-
-
 
 #esquerda {
-border: 3px solid black;
-width: 450px;
-height: 750px;
+    border: 3px solid black;
+    width: 450px;
+    height: 750px;
+    padding: 10px;
+    box-sizing: border-box;
 }
-
-
-
 
 #rodape {
-border: 3px solid green;
-width: auto;
-height: 50px;
-display: flex;
+    border: 3px solid green;
+    width: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
