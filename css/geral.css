@@ -1,11 +1,11 @@
 #corpo {
-    border: 3px solid black;
+    border: 3px solid green;
     width: auto;
     height: auto;
 }
 
 #topo {
-    border: 3px solid blue;
+    border: 3px solid green;
     width: auto;
     height: 100px;
 }
@@ -17,7 +17,7 @@
     background-color: #444;
     height: 60px;
     color: white;
-    border: 3px solid gray;
+    border: 3px solid green;
 }
 
 #menu div {
@@ -44,7 +44,7 @@
 }
 
 #centro {
-    border: 3px solid yellow;
+    border: 3px solid green;
     width: 1000px;
     height: 750px;
     display: flex;
@@ -55,7 +55,7 @@
 }
 
 #direita {
-    border: 3px solid red;
+    border: 3px solid green;
     width: 450px;
     height: 750px;
     padding: 10px;
@@ -63,7 +63,7 @@
 }
 
 #esquerda {
-    border: 3px solid black;
+    border: 3px solid green;
     width: 450px;
     height: 750px;
     padding: 10px;
