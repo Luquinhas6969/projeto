@@ -8,7 +8,6 @@ body {
     background-repeat: no-repeat;
 }
 
-
 #corpo {
     border: 3px solid #FFA500;
     width: auto;
@@ -56,7 +55,6 @@ body {
 .botao-catalogo:hover {
     background-color: #e0a84d;
 }
-
 
 #menu div {
     flex: 1;
@@ -125,3 +123,63 @@ body {
     background-color: #ffae42;
     font-weight: bold;
 }
+
+
+
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.card {
+    background-color: #fff8e1;
+    border: 1px solid #f0c36d;
+    border-radius: 10px;
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+
+.botao-adote {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f3c16f;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.botao-adote:hover {
+    background-color: #e0a84d;
+}
+
+
