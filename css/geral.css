@@ -182,4 +182,63 @@ body {
     background-color: #e0a84d;
 }
 
+#centro {
+    background-color: #fff3e6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#centro h2 {
+    text-align: center;
+    color: #e67300;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+#centro form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#centro form label {
+    font-weight: bold;
+    color: #333;
+}
+
+#centro form input[type="text"],
+#centro form input[type="email"],
+#centro form input[type="tel"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+#centro form input[type="text"]:focus,
+#centro form input[type="email"]:focus,
+#centro form input[type="tel"]:focus {
+    border-color: #ff914d;
+    outline: none;
+}
+
+#centro form input[type="submit"] {
+    background-color: #ff914d;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#centro form input[type="submit"]:hover {
+    background-color: #e67300;
+}
+
+
 
