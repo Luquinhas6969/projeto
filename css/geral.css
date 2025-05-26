@@ -82,18 +82,21 @@ body {
 
 #centro {
     border: 3px solid #FFA500;
-    width: 1000px;
-    height: 750px;
+    width: 100%;
+    max-width: 1200px; /* Ajuste conforme desejar */
+    min-height: 750px;  /* Melhor que height fixa */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     padding: 20px;
     box-sizing: border-box;
     background-color: #fff6e5;
     font-size: 16px;
     line-height: 1.8;
+    margin: 0 auto; 
 }
+
 
 #direita {
     border: 3px solid #FFA500;
