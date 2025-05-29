@@ -7,13 +7,11 @@
 </head>
 <body>
     <div id="corpo">
-        
-       
+
         <div id="topo">
             <h1>Contatos</h1>
         </div>
 
-      
         <div id="menu">
             <div id="botao1"><a href="index.html">Início</a></div>
             <div id="botao2"><a href="adote.html">Adote já!</a></div>
@@ -22,15 +20,12 @@
             <div id="botao5"><a href="faleconosco.html">Fale Conosco</a></div>
         </div>
 
-        
         <div id="conteudo">
 
-           
             <div id="esquerda">
                 <img src="imagens/cachorrotriste.jpg" alt="Cachorro triste" style="width: 100%;">
             </div>
 
-  
             <div id="centro">
                 <h2>Informações de Contato</h2>
                 <p><strong>Email:</strong> lucas.silva66@estudante.ifto.edu.br</p>
@@ -39,67 +34,60 @@
                     <a href="https://instagram.com/lucasxbrgs" target="_blank">@lucasxbrgs</a>
                 </p>
 
-                 
-              <h2>Entre em contato para realizar uma doação!</h2>
+                <h2>Entre em contato para realizar uma doação!</h2>
+                <form action="index.html" method="get" onsubmit="return validarFormulario()">
+                    <label for="nome">Nome completo:</label><br>
+                    <input type="text" id="nome" name="nome" required minlength="3" placeholder="Ex: Ana Silva"><br><br>
 
-<form action="index.html" method="get" onsubmit="return validarFormulario()">
-    <label for="nome">Nome completo:</label><br>
-    <input type="text" id="nome" name="nome" required minlength="3" placeholder="Ex: Ana Silva"><br><br>
+                    <label for="email">E-mail:</label><br>
+                    <input type="email" id="email" name="email" required placeholder="exemplo@dominio.com"><br><br>
 
-    <label for="email">E-mail:</label><br>
-    <input type="email" id="email" name="email" required placeholder="exemplo@dominio.com"><br><br>
+                    <label for="telefone">Telefone:</label><br>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(DDD) 91234-5678"><br><br>
 
-    <label for="telefone">Telefone:</label><br>
-    <input type="tel" id="telefone" name="telefone" placeholder="(DDD) 91234-5678"><br><br>
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
 
-    <input type="submit" value="Enviar">
-</form>
-
-<script>
-function validarFormulario() {
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const telefone = document.getElementById('telefone').value.trim();
-
-    // Validação do nome (mínimo 3 caracteres)
-    if (nome.length < 3) {
-        alert("O nome deve ter pelo menos 3 caracteres.");
-        return false;
-    }
-
-    // Validação do e-mail com regex simples
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert("Por favor, insira um e-mail válido.");
-        return false;
-    }
-
-    // Validação opcional de telefone (se preenchido)
-    if (telefone !== "") {
-        const telefoneRegex = /^\(?\d{2}\)?\s?\d{4,5}-\d{4}$/;
-        if (!telefoneRegex.test(telefone)) {
-            alert("Por favor, insira um telefone válido no formato (DDD) 91234-5678.");
-            return false;
-        }
-    }
-
-    // Se tudo estiver certo
-    return true;
-}
-</script>
-
-
-           
             <div id="direita">
                 <img src="imagens/gato triste.jpg" alt="Gato triste" style="width: 100%;">
             </div>
         </div>
 
-    
         <div id="rodape">
             <p>&copy; 2025 - Site desenvolvido por Lucas Gabriel</p>
         </div>
 
     </div>
+
+    <script>
+        function validarFormulario() {
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+
+            if (nome.length < 3) {
+                alert("Por favor, preencha o nome completo com pelo menos 3 caracteres.");
+                return false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, insira um e-mail válido.");
+                return false;
+            }
+
+            if (telefone !== "") {
+                const telefoneRegex = /^\(?\d{2}\)?\s?\d{4,5}-\d{4}$/;
+                if (!telefoneRegex.test(telefone)) {
+                    alert("Por favor, insira um telefone válido no formato (DDD) 91234-5678.");
+                    return false;
+                }
+            }
+
+            alert("Obrigado! Seus dados foram enviados com sucesso.");
+            return true;
+        }
+    </script>
 </body>
 </html>
