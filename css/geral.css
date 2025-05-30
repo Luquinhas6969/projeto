@@ -19,14 +19,16 @@ body {
     border: 3px solid #FFA500;
     width: auto;
     height: 100px;
-    background-color: #fff6e5;
+    background-image: url('../imagens/banner2.jpg');
+    background-size: cover; 
+    background-position: center; 
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('imagens/banner2.jpg');
-    background-size: cover; 
-    background-position: center; 
+    background-color: #fff6e5;
+    color: white;
 }
+
 
 #menu {
     display: flex;
@@ -187,11 +189,6 @@ body {
 .botao-adote:hover {
     background-color: #e0a84d;
 
-    #topo {
-    background-image: url('projeto/imagens/banner2.jpg');
-    background-size: cover; 
-    background-position: center;
-}
-
+ 
 
     
