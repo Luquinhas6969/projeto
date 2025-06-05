@@ -3,93 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <title>Me leve para casa!</title> 
-    <link href="css/geral.css" rel="stylesheet"/>
+    <link href="css/geral.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         #topo h1 {
             color: #e65729;
             font-size: 36px;
             margin: 0;
         }
-
-        #corpo {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        #menu {
-            display: flex;
-            justify-content: center;
-            background-color: #f0f0f0;
-            padding: 10px 0;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        #menu div {
-            background-color: #e65729;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        #menu div a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        #conteudo {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            gap: 20px;
-            flex-wrap: wrap;
-            flex-grow: 1;
-        }
-
-        #esquerda, #direita {
-            flex: 1 1 200px; 
-            max-width: 300px;
-        }
-
-        #centro {
-            flex: 2 1 400px; 
-            max-width: 700px;
-        }
-
-       
-        #rodape {
-            background-color: #f9f9f9;
-            padding: 15px;
-            font-style: italic;
-            text-align: center;
-        }
-
-       /
-        @media (max-width: 768px) {
-            #conteudo {
-                flex-direction: column;
-                padding: 10px;
-            }
-            #esquerda, #direita, #centro {
-                max-width: 100%;
-                flex: 1 1 100%;
-            }
-
-            #menu {
-                justify-content: center;
-            }
-        }
     </style>
 </head>
 <body>
     <div id="corpo">
+        <!-- Cabeçalho -->
         <div id="topo">
-            <!-- Você pode colocar o h1 aqui, por exemplo -->
-            <h1>Me leve para casa!</h1>
+            <!-- Espaço para título ou logo -->
         </div>
 
+        <!-- Menu de navegação -->
         <div id="menu">
             <div id="botao1"><a href="index.html">Início</a></div>
             <div id="botao2"><a href="adote.html">Adote já!</a></div>
@@ -98,15 +30,18 @@
             <div id="botao5"><a href="faleconosco.html">Fale Conosco</a></div>
         </div>
 
+        <!-- Conteúdo principal -->
         <div id="conteudo">
+            <!-- Lado esquerdo com imagem -->
             <div id="esquerda">
-                <img src="imagens/banner1.jpg" alt="Cachorro triste" style="width: 100%;">
+                <img src="imagens/banner1.jpg" alt="Cachorro triste" style="width: 100%;" />
             </div>
 
+            <!-- Conteúdo central -->
             <div id="centro">
                 <h2>Nosso Propósito</h2>
                 <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
-                    <strong></strong> Olá! Meu nome é Lucas Gabriel e este site foi desenvolvido por mim como parte das atividades do curso de Desenvolvimento Web. 
+                    Olá! Meu nome é Lucas Gabriel e este site foi desenvolvido por mim como parte das atividades do curso de Desenvolvimento Web. 
                     A proposta deste projeto é criar uma plataforma simples, funcional e eficiente para facilitar o processo de adoção de animais, conectando pessoas interessadas em adotar animais que precisam de um novo lar.
                 </p>
                 <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
@@ -121,13 +56,15 @@
                 </p>
             </div>
 
+            <!-- Lado direito com imagem -->
             <div id="direita">
-                <img src="imagens/gato triste.jpg" alt="Gato triste" style="width: 100%;">
+                <img src="imagens/gato triste.jpg" alt="Gato triste" style="width: 100%;" />
             </div>
         </div>
 
+        <!-- Rodapé -->
         <div id="rodape">
-            <p>
+            <p style="text-align: center; font-style: italic;">
                 "Adotar é um ato de amor. Faça parte dessa corrente do bem!"
             </p>
         </div>
