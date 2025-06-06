@@ -39,7 +39,7 @@
     <input type="email" id="email" name="email" required placeholder="exemplo@dominio.com"><br><br>
 
     <label for="telefone">Telefone:</label><br>
-    <input type="tel" id="telefone" name="telefone" placeholder=""><br><br>
+    <input type="tel" id="telefone" name="telefone" placeholder="(63)99213-5739"><br><br>
 
     <label for="animal">Animal que deseja adotar:</label><br>
     <input type="text" id="animal" name="animal" required placeholder="Ex: Gato, Cachorro..."><br><br>
@@ -65,12 +65,7 @@ function validarFormulario() {
         return false;
     }
 
-    if (telefone !== "") {
-        const telefoneRegex = /^\(?\d{2}\)?\s?\d{4,5}-\d{4}$/;
-        if (!telefoneRegex.test(telefone)) {
-            alert("Por favor, insira um telefone válido no formato (DDD) 91234-5678.");
-            return false;
-        }
+  
     }
 
     if (animal.length === 0) {
