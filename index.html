@@ -2,226 +2,73 @@
 <html lang="pt">
 <head>
     <meta charset="utf-8" />
-    <title>Me leva pra casa</title>
-    <link href="css/geral.css" rel="stylesheet"/>
+    <title>Me leve para casa!</title> 
+    <link href="css/geral.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
-        /* Estilos adicionais para o formulário */
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff9f2;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
+        #topo h1 {
             color: #e65729;
-        }
-        
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 2px solid #ffae42;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        
-        button {
-            background-color: #e65729;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            margin-top: 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #ff9a44;
-        }
-        
-        .erro {
-            color: red;
-            font-size: 14px;
-            margin-top: 5px;
-            display: none;
+            font-size: 36px;
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <div id="corpo">
-        <div id="topo"></div>
+        <!-- Cabeçalho -->
+        <div id="topo">
+            <!-- Espaço para título ou logo -->
+        </div>
 
+        <!-- Menu de navegação -->
         <div id="menu">
-            <div id="botao1"><a href="index.html">Ínicio</a></div>
+            <div id="botao1"><a href="index.html">Início</a></div>
             <div id="botao2"><a href="adote.html">Adote já!</a></div>
             <div id="botao3"><a href="catalogo.html">Catálogo</a></div>
             <div id="botao4"><a href="contatos.html">Contatos</a></div>
             <div id="botao5"><a href="faleconosco.html">Fale Conosco</a></div>
         </div>
 
+        <!-- Conteúdo principal -->
         <div id="conteudo">
+            <!-- Lado esquerdo com imagem -->
             <div id="esquerda">
-                <h2></h2>
-                <img src="imagens/gato1.jpg" alt="Gato para adoção" style="width: 100%;">
+                <img src="imagens/banner1.jpg" alt="Cachorro triste" style="width: 100%;" />
             </div>
 
+            <!-- Conteúdo central -->
             <div id="centro">
-                <h2>Formulário de Adoção</h2>
-
-                <form id="formAdocao" onsubmit="return validarFormulario(event)">
-                    <label for="nome">Nome completo:</label>
-                    <input type="text" id="nome" name="nome" placeholder="Ex: Ana Silva">
-                    <div id="erroNome" class="erro">Por favor, insira seu nome completo (mínimo 3 caracteres)</div>
-
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" placeholder="exemplo@dominio.com">
-                    <div id="erroEmail" class="erro">Por favor, insira um e-mail válido</div>
-
-                    <label for="telefone">Telefone:</label>
-                    <input type="tel" id="telefone" name="telefone" placeholder="(63) 99213-5739">
-                    <div id="erroTelefone" class="erro">Por favor, insira um telefone válido (com DDD)</div>
-
-                    <label for="animal">Animal que deseja adotar:</label>
-                    <input type="text" id="animal" name="animal" placeholder="Ex: Gato, Cachorro...">
-                    <div id="erroAnimal" class="erro">Por favor, informe qual animal deseja adotar</div>
-
-                    <label for="endereco">Endereço completo:</label>
-                    <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro, cidade">
-                    <div id="erroEndereco" class="erro">Por favor, insira seu endereço completo</div>
-
-                    <label for="experiencia">Tem experiência com pets?</label>
-                    <select id="experiencia" name="experiencia">
-                        <option value="">Selecione...</option>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
-                    </select>
-                    <div id="erroExperiencia" class="erro">Por favor, selecione uma opção</div>
-
-                    <label for="mensagem">Por que deseja adotar?</label>
-                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Nos conte um pouco sobre você e por que deseja adotar..."></textarea>
-                    <div id="erroMensagem" class="erro">Por favor, escreva uma mensagem</div>
-
-                    <button type="submit">Enviar Solicitação de Adoção</button>
-                </form>
+                <h2>Nosso Propósito</h2>
+                <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
+                    Olá! Meu nome é Lucas Gabriel e este site foi desenvolvido por mim como parte das atividades do curso de Desenvolvimento Web. 
+                    A proposta deste projeto é criar uma plataforma simples, funcional e eficiente para facilitar o processo de adoção de animais, conectando pessoas interessadas em adotar animais que precisam de um novo lar.
+                </p>
+                <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
+                   Aqui, você encontrará informações sobre cães e gatos disponíveis para adoção, com fotos, perfis e detalhes importantes para ajudar a tomar a melhor decisão. O objetivo é tornar o processo mais rápido, transparente e acessível, promovendo o bem-estar animal e incentivando a adoção responsável.
+                </p>
+                <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
+                    Aqui no site, você pode conhecer os animais disponíveis para adoção, saber como contribuir com doações ou voluntariado, e acompanhar histórias de adoções bem-sucedidas.
+                    Cada clique seu pode representar uma nova vida salva!
+                </p>
+                <p style="text-align: center; font-size: 20px; font-weight: bold; margin-top: 20px;">
+                    💛 <a href="catalogo.html">Clique aqui e conheça nossos heróis de quatro patas!</a> 💛
+                </p>
             </div>
 
+            <!-- Lado direito com imagem -->
             <div id="direita">
-                <h2></h2>
-                <img src="imagens/cachorro1.jpg" alt="Cachorro para adoção" style="width: 100%;">
+                <img src="imagens/gato triste.jpg" alt="Gato triste" style="width: 100%;" />
             </div>
         </div>
 
+        <!-- Rodapé -->
         <div id="rodape">
-            <p></p>
+            <p style="text-align: center; font-style: italic;">
+                "Adotar é um ato de amor. Faça parte dessa corrente do bem!"
+            </p>
         </div>
     </div>
-
-    <script>
-        // Função para formatar telefone
-        function formatarTelefone(input) {
-            // Remove tudo que não é dígito
-            let value = input.value.replace(/\D/g, '');
-            
-            // Formata o telefone
-            if (value.length > 2) {
-                value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
-            }
-            if (value.length > 10) {
-                value = `${value.substring(0, 10)}-${value.substring(10, 14)}`;
-            }
-            
-            input.value = value;
-        }
-
-        // Adiciona máscara ao campo de telefone
-        document.getElementById('telefone').addEventListener('input', function() {
-            formatarTelefone(this);
-        });
-
-        // Função principal de validação
-        function validarFormulario(event) {
-            event.preventDefault(); // Previne o envio padrão
-            
-            // Resetar mensagens de erro
-            document.querySelectorAll('.erro').forEach(el => el.style.display = 'none');
-            
-            // Obter valores dos campos
-            const nome = document.getElementById('nome').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const telefone = document.getElementById('telefone').value.trim();
-            const animal = document.getElementById('animal').value.trim();
-            const endereco = document.getElementById('endereco').value.trim();
-            const experiencia = document.getElementById('experiencia').value;
-            const mensagem = document.getElementById('mensagem').value.trim();
-            
-            let valido = true;
-            
-            // Validação do nome
-            if (nome.length < 3) {
-                document.getElementById('erroNome').style.display = 'block';
-                valido = false;
-            }
-            
-            // Validação do email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                document.getElementById('erroEmail').style.display = 'block';
-                valido = false;
-            }
-            
-            // Validação do telefone (pelo menos 14 caracteres com máscara)
-            if (telefone.length < 14) {
-                document.getElementById('erroTelefone').style.display = 'block';
-                valido = false;
-            }
-            
-            // Validação do animal
-            if (animal.length === 0) {
-                document.getElementById('erroAnimal').style.display = 'block';
-                valido = false;
-            }
-            
-            // Validação do endereço
-            if (endereco.length < 10) {
-                document.getElementById('erroEndereco').style.display = 'block';
-                valido = false;
-            }
-            
-            // Validação da experiência
-            if (experiencia === "") {
-                document.getElementById('erroExperiencia').style.display = 'block';
-                valido = false;
-            }
-            
-            // Validação da mensagem
-            if (mensagem.length < 20) {
-                document.getElementById('erroMensagem').style.display = 'block';
-                valido = false;
-            }
-            
-            // Se tudo estiver válido, envia o formulário
-            if (valido) {
-                alert("Formulário enviado com sucesso! Entraremos em contato em breve para continuar o processo de adoção.");
-                document.getElementById('formAdocao').reset();
-                window.location.href = "index.html";
-            }
-            
-            return false;
-        }
-    </script>
 </body>
 </html>
+
