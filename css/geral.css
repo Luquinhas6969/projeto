@@ -33,13 +33,25 @@ body {
 
 
 #menu {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #ffae42;
-    height: 60px;
-    color: white;
-    border: 3px solid #FFA500;
+    background: linear-gradient(to right, #e65729, #ff9a44);
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#menu div {
+    transition: all 0.3s ease;
+    padding: 15px 0;
+    border-radius: 8px;
+}
+
+#menu div:hover {
+    background-color: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+}
+
+#menu div a {
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 .botao-catalogo {
