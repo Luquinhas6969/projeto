@@ -91,6 +91,7 @@ body {
 #menu div:hover {
     background-color: #ffa31a;
 }
+
 /* Conteúdo principal - Layout para desktop */
 #conteudo {
     display: flex;
