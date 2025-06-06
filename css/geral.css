@@ -189,6 +189,60 @@ body {
 .botao-adote:hover {
     background-color: #e0a84d;
 
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+}
+
+#corpo {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#conteudo {
+    flex: 1;
+    display: flex;
+}
+
+#esquerda, #direita {
+    width: 15%; /* Ajuste como preferir */
+    height: auto;
+}
+
+#esquerda img, #direita img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+#centro {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+#menu {
+    background-color: #e65729;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#rodape {
+    background-color: #e65729;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+
 
  
 
