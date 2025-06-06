@@ -91,30 +91,82 @@ body {
 #menu div:hover {
     background-color: #ffa31a;
 }
+/* Conteúdo principal - Layout para desktop */
 #conteudo {
-    padding: 30px;
-    background-color: #fff9f2;
+    display: flex;
+    flex-wrap: nowrap; /* Impede que os itens quebrem para nova linha */
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px; /* Espaço entre as colunas */
 }
 
+/* Colunas laterais */
+#esquerda, #direita {
+    width: 25%; /* Largura reduzida para as colunas laterais */
+    min-height: 500px; /* Altura mínima */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Centraliza o conteúdo principal */
 #centro {
+    flex: 1; /* Ocupa o espaço restante */
+    max-width: 50%; /* Largura máxima do conteúdo central */
+    padding: 20px;
     background-color: white;
     border-radius: 15px;
-    padding: 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-#esquerda, #direita {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
+/* Estilo para as imagens laterais */
 #esquerda img, #direita img {
-    transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 
-#esquerda img:hover, #direita img:hover {
-    transform: scale(1.05);
+/* Media query para mobile */
+@media (max-width: 768px) {
+    #conteudo {
+        flex-direction: column;
+    }
+    
+    #esquerda, #direita, #centro {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    #esquerda, #direita {
+        order: 1; /* Coloca as imagens antes do conteúdo */
+        min-height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    
+    #esquerda img, #direita img {
+        width: 48%; /* Divide o espaço para duas imagens por linha */
+        max-height: 200px;
+    }
+    
+    #centro {
+        order: 2; /* Garante que o conteúdo fique no meio */
+    }
+}
+
+/* Ajuste adicional para telas muito pequenas */
+@media (max-width: 480px) {
+    #esquerda, #direita {
+        flex-direction: column;
+    }
+    
+    #esquerda img, #direita img {
+        width: 100%;
+    }
 }
 
 #rodape {
