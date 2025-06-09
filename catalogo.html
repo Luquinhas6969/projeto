@@ -1,52 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8" />
-    <title>Me leva pra casa</title>
-    <link href="css/geral.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8">
+  <title>Animais para Adoção</title>
+  <link rel="stylesheet" href="css/geral.css">
+  <style>
+    #catalogo { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+    .animal { border: 1px solid #ccc; padding: 10px; width: 250px; border-radius: 8px; }
+    .animal img { width: 100%; height: auto; border-radius: 4px; }
+    .animal h3 { margin: 10px 0 5px; }
+  </style>
 </head>
 <body>
-    <div id="corpo">
-        <div id="topo">
-          
-        </div>
+  <div id="topo">
+    <h1>Animais Disponíveis para Adoção</h1>
+  </div>
 
-        <div id="menu">
-            <div id="botao1"><a href="index.html">Início</a></div>
-            <div id="botao2"><a href="adote.html">Adote já!</a></div>
-            <div id="botao3"><a href="catalogo.html">Catálogo</a></div>
-            <div id="botao4"><a href="contatos.html">Contatos</a></div>
-            <div id="botao5"><a href="faleconosco.html">Fale Conosco</a></div>
-        </div>
+  <div id="catalogo"></div>
 
-        <div id="conteudo">
-            <div id="esquerda">
-                <img src="imagens/ca3.jpg" alt="Cachorro para adoção" style="width: 100%;">
-            </div>
+  <script>
+    const catalogo = document.getElementById("catalogo");
+    const animais = JSON.parse(localStorage.getItem("animais")) || [];
 
-            <div id="centro" style="text-align: center;">
-                <h2>Escolha uma categoria:</h2>
-                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
-
-                    <div class="botao-catalogo"><a href="cachorros.html">🐶 Cachorros</a></div>
-                    <div class="botao-catalogo"><a href="gatos.html">🐱 Gatos</a></div>
-                    <div class="botao-catalogo"><a href="passaros.html">🐦 Pássaros</a></div>
-
-                </div>
-            </div>
-
-            <div id="direita">
-                <img src="imagens/ga3.jpg" alt="Gato para adoção" style="width: 100%;">
-            </div>
-        </div>
-
-        <div id="rodape">
-            <p style="text-align: center; font-style: italic;">
-                "Cada clique pode salvar uma vida. Adote com o coração!"
-            </p>
-        </div>
-    </div>
+    if (animais.length === 0) {
+      catalogo.innerHTML = "<p>Nenhum animal cadastrado ainda.</p>";
+    } else {
+      animais.forEach(a => {
+        const div = document.createElement("div");
+        div.className = "animal";
+        div.innerHTML = `
+          ${a.imagem ? `<img src="${a.imagem}" alt="Imagem do animal">` : ""}
+          <h3>${a.nome}</h3>
+          <p><strong>Descrição:</strong> ${a.descricao}</p>
+          <p><strong>Localização:</strong> ${a.localizacao}</p>
+          <p><strong>Saúde:</strong> ${a.saude}</p>
+        `;
+        catalogo.appendChild(div);
+      });
+    }
+  </script>
 </body>
 </html>
