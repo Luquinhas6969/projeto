@@ -1,74 +1,120 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8" />
-    <title>Me leve para casa!</title> 
-    <link href="css/geral.css" rel="stylesheet" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        #topo h1 {
-            color: #e65729;
-            font-size: 36px;
-            margin: 0;
-        }
-    </style>
+    <title>Me leve pra casa! - Adoção de animais</title>
+    <link rel="stylesheet" href="geral.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="corpo">
-        <!-- Cabeçalho -->
-        <div id="topo">
-            <!-- Espaço para título ou logo -->
-        </div>
-
-        <!-- Menu de navegação -->
-        <div id="menu">
-            <div id="botao1"><a href="index.html">Início</a></div>
-            <div id="botao2"><a href="adote.html">Adote já!</a></div>
-            <div id="botao3"><a href="catalogo.html">Catálogo</a></div>
-            <div id="botao4"><a href="contatos.html">Contatos</a></div>
-            <div id="botao5"><a href="faleconosco.html">Fale Conosco</a></div>
-        </div>
-
-        <!-- Conteúdo principal -->
-        <div id="conteudo">
-            <!-- Lado esquerdo com imagem -->
-            <div id="esquerda">
-                <img src="imagens/cachorro1.jpg" alt="Cachorro triste" style="width: 100%;" />
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Me leve pra casa!</h1>
+                <p>Encontre seu novo melhor amigo</p>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Início</a></li>
+                    <li><a href="#">🐾 Animais para Adoção</a></li>
+                    <li><a href="#">📝 Cadastrar Animal</a></li>
+                    <li><a href="#">🤝 Como Ajudar</a></li>
+                    <li><a href="#">ℹ️ Sobre</a></li>
+                    <li><a href="#">✉️ Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-            <!-- Conteúdo central -->
-            <div id="centro">
-                <h2>Nosso Propósito</h2>
-                <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
-                    Olá! Meu nome é Lucas Gabriel e este site foi desenvolvido por mim como parte das atividades do curso de Desenvolvimento Web. 
-                    A proposta deste projeto é criar uma plataforma simples, funcional e eficiente para facilitar o processo de adoção de animais, conectando pessoas interessadas em adotar animais que precisam de um novo lar.
-                </p>
-                <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
-                   Aqui, você encontrará informações sobre cães e gatos disponíveis para adoção, com fotos, perfis e detalhes importantes para ajudar a tomar a melhor decisão. O objetivo é tornar o processo mais rápido, transparente e acessível, promovendo o bem-estar animal e incentivando a adoção responsável.
-                </p>
-                <p style="text-align: justify; font-size: 18px; line-height: 1.6;">
-                    Aqui no site, você pode conhecer os animais disponíveis para adoção, saber como contribuir com doações ou voluntariado, e acompanhar histórias de adoções bem-sucedidas.
-                    Cada clique seu pode representar uma nova vida salva!
-                </p>
-                <p style="text-align: center; font-size: 20px; font-weight: bold; margin-top: 20px;">
-                    💛 <a href="catalogo.html">Clique aqui e conheça nossos heróis de quatro patas!</a> 💛
-                </p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Conectando animais abandonados a lares amorosos</h2>
+                    <p>Nosso objetivo é facilitar o processo de adoção de animais abandonados, tornando mais fácil para comunidades ajudarem esses amigos peludos a encontrarem um lar.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn primary">Ver animais para adoção</a>
+                        <a href="#" class="btn secondary">Cadastrar animal</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/500x350" alt="Cachorro e gato juntos" class="hero-img">
+                </div>
             </div>
+        </section>
 
-            <!-- Lado direito com imagem -->
-            <div id="direita">
-                <img src="imagens/gato triste.jpg" alt="Gato triste" style="width: 100%;" />
+        <section class="features">
+            <div class="container">
+                <h2>Como funciona</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Encontrou um animal?</h3>
+                        <p>Cadastre com fotos e informações básicas para ajudar a encontrar um lar.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏠</div>
+                        <h3>Procurando adotar?</h3>
+                        <p>Navegue pelos animais disponíveis e encontre seu novo companheiro.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">❤️</div>
+                        <h3>Quer ajudar?</h3>
+                        <p>Divulgue, doe ou seja um lar temporário. Toda ajuda é bem-vinda!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Intuito do site</h2>
+                    <p>O "Me leve pra casa!" foi criado para conectar animais abandonados com pessoas dispostas a oferecer um lar. Muitos animais são abandonados nas ruas, especialmente fêmeas com filhotes, e precisam de ajuda urgente.</p>
+                    <p>Nosso objetivo é tornar o processo de adoção mais prático e acessível, permitindo que qualquer pessoa de uma comunidade, bairro ou cidade possa cadastrar animais encontrados com descrições e fotos, facilitando a busca por adotantes responsáveis.</p>
+                    <a href="#" class="btn primary">Saiba mais sobre nós</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x300" alt="Família com animal adotado">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Me leve pra casa!</h3>
+                    <p>Conectando corações peludos a lares amorosos.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links rápidos</h4>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Animais para adoção</a></li>
+                        <li><a href="#">Cadastrar animal</a></li>
+                        <li><a href="#">Como ajudar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>lucas.silva66@estudante.ifto.edu.br</p>
+                    <p>(63) 99213-5739</p>
+                    <div class="social-icons">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">WA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Me leve pra casa! - Todos os direitos reservados</p>
             </div>
         </div>
-
-        <!-- Rodapé -->
-        <div id="rodape">
-            <p style="text-align: center; font-style: italic;">
-                "Adotar é um ato de amor. Faça parte dessa corrente do bem!"
-            </p>
-        </div>
-    </div>
+    </footer>
 </body>
 </html>
-
