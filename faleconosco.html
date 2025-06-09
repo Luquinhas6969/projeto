@@ -1,50 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8" />
-    <title>Fale conosco!</title>
-    <link href="css/geral.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8">
+  <title>Cadastrar Animal</title>
+  <link rel="stylesheet" href="css/geral.css">
+  <style>
+    form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 10px; }
+    input, textarea { padding: 8px; }
+  </style>
 </head>
 <body>
-    <div id="corpo">
-        <div id="topo">
-          
-        </div>
+  <div id="topo">
+    <h1>Cadastrar Animal</h1>
+  </div>
 
-        
-        <div id="menu">
-            <div id="botao1"><a href="index.html">Ínicio</a></div>
-            <div id="botao2"><a href="adote.html">Adote já!</a></div>
-            <div id="botao3"><a href="catalogo.html">Catálogo</a></div>
-            <div id="botao4"><a href="contatos.html">Contatos</a></div>
-            <div id="botao5"><a href="faleconosco.html">Fale Conosco</a></div>
-        </div>
+  <form id="formAnimal">
+    <input type="text" id="nome" placeholder="Nome do Animal" required />
+    <textarea id="descricao" placeholder="Descrição" required></textarea>
+    <input type="text" id="localizacao" placeholder="Localização" required />
+    <input type="text" id="saude" placeholder="Estado de Saúde" required />
+    <input type="url" id="imagem" placeholder="URL da Imagem (opcional)" />
+    <button type="submit">Cadastrar</button>
+  </form>
 
-        <div id="conteudo">
-            <div id="esquerda">
-                <h2></h2>
-                <img src="imagens/ca4.jpg" alt="" style="width: 100%;">
-            </div>
-            <div id="centro">
-    
-                <h2>Informações de Contato</h2>
-                <p><strong>Email:</strong> lucas.silva66@estudante.ifto.edu.br</p>
-                <p><strong>Celular:</strong> +55 (63) 99213-5739</p>
-                <p><strong>Instagram:</strong> 
-                    <a href="https://instagram.com/lucasxbrgs" target="_blank">@lucasxbrgs</a>
-                </p>
-            </div>
-            <div id="direita">
-                <h2></h2>
-                <img src="imagens/ga4.jpg" alt="" style="width: 100%;">
-            </div>
-        </div>
-
-        <div id="rodape">
-            <p>© 2025 - Site desenvolvido por Lucas Gabriel</p>
-        </div>
-    </div>
+  <script>
+    document.getElementById("formAnimal").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const animal = {
+        nome: document.getElementById("nome").value,
+        descricao: document.getElementById("descricao").value,
+        localizacao: document.getElementById("localizacao").value,
+        saude: document.getElementById("saude").value,
+        imagem: document.getElementById("imagem").value
+      };
+      const lista = JSON.parse(localStorage.getItem("animais")) || [];
+      lista.push(animal);
+      localStorage.setItem("animais", JSON.stringify(lista));
+      alert("Animal cadastrado com sucesso!");
+      window.location.href = "catalogo.html";
+    });
+  </script>
 </body>
 </html>
