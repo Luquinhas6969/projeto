@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário de Adoção</title>
+  <link rel="stylesheet" href="css/geral.css">
+</head>
+<body>
+  <!-- MENU -->
+<div id="menu">
+  <div><a href="index.html">Início</a></div>
+  <div><a href="catalogo.html">Animais para Adoção</a></div>
+  <div><a href="faleconosco.html">Cadastrar Animal</a></div>
+  <div><a href="ajudar.html">Como Ajudar</a></div>
+  <div><a href="sobre.html">Sobre</a></div>
+  <div><a href="contato.html">Contato</a></div>
+</div>
+
+  <div id="topo">
+    <h1>Formulário de Adoção</h1>
+  </div>
+
+  <div id="formContainer">
+    <div id="animalSelecionado"></div>
+
+    <form id="formAdocao">
+      <input type="text" id="nomePessoa" placeholder="Seu Nome" required />
+      <input type="email" id="email" placeholder="Seu E-mail" required />
+      <input type="tel" id="telefone" placeholder="Telefone com DDD" pattern="\\d{10,11}" required />
+      <textarea id="motivo" placeholder="Por que deseja adotar?" required></textarea>
+      <button type="submit">Enviar Pedido de Adoção</button>
+    </form>
+  </div>
+
+  <script>
+    const animal = JSON.parse(localStorage.getItem("adocaoSelecionada"));
+    const divAnimal = document.getElementById("animalSelecionado");
+
+    if (animal) {
+      divAnimal.innerHTML = `
+        <h2>Você quer adotar:</h2>
+        ${animal.imagem ? `<img src="${animal.imagem}" style="max-width:200px;border-radius:10px;">` : ""}
+        <p><strong>Nome:</strong> ${animal.nome}</p>
+        <p><strong>Descrição:</strong> ${animal.descricao}</p>
+      `;
+    }
+
+    document.getElementById("formAdocao").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nome = document.getElementById("nomePessoa").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      const motivo = document.getElementById("motivo").value.trim();
+
+      if (!nome || !email || !telefone || !motivo) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      alert("Pedido de adoção enviado com sucesso!");
+      localStorage.removeItem("adocaoSelecionada");
+      window.location.href = "catalogo.html";
+    });
+  </script>
+</body>
+</html>
