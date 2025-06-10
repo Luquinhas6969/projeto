@@ -234,3 +234,126 @@ button:hover {
     background-color: #e0a84d;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fef7ed;
+}
+
+#topo {
+  background: linear-gradient(135deg, #ff9a44, #e65729);
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+#topo h1 {
+  font-size: 42px;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+}
+#topo p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* MENU */
+#menu {
+  background: linear-gradient(to right, #e65729, #ff9a44);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+#menu div {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+#menu div:hover {
+  background-color: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
+}
+#menu div a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* CONTEÚDO */
+#conteudo {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+#centro {
+  max-width: 900px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.perfil img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 30px;
+  border: 3px solid #FFA500;
+}
+.perfil .texto {
+  flex: 1;
+}
+.perfil .texto h2 {
+  color: #e65729;
+  margin-top: 0;
+}
+.perfil .texto p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* RODAPÉ */
+#rodape {
+  background: linear-gradient(to right, #e65729, #ff9a44);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 15px 15px 0 0;
+}
+#rodape p {
+  margin: 0;
+  font-weight: bold;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .perfil {
+    flex-direction: column;
+    text-align: center;
+  }
+  .perfil img {
+    margin: 0 0 20px 0;
+  }
+  #menu {
+    flex-direction: column;
+  }
+  #menu div {
+    padding: 12px 0;
+  }
+}
+
+
