@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Animais para Adoção</title>
-  <link rel="stylesheet" href="css/geral.css">
-  <style>
-    #catalogo { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
-    .animal { border: 1px solid #ccc; padding: 10px; width: 250px; border-radius: 8px; }
-    .animal img { width: 100%; height: auto; border-radius: 4px; }
-    .animal h3 { margin: 10px 0 5px; }
-  </style>
+  <link rel="stylesheet" href="css/catalogo.css">
 </head>
 <body>
+  <!-- MENU -->
+<div id="menu">
+  <div><a href="index.html">Início</a></div>
+  <div><a href="catalogo.html">Animais para Adoção</a></div>
+  <div><a href="faleconosco.html">Cadastrar Animal</a></div>
+  <div><a href="ajudar.html">Como Ajudar</a></div>
+  <div><a href="sobre.html">Sobre</a></div>
+  <div><a href="contato.html">Contato</a></div>
+</div>
+
   <div id="topo">
     <h1>Animais Disponíveis para Adoção</h1>
   </div>
@@ -20,12 +24,20 @@
 
   <script>
     const catalogo = document.getElementById("catalogo");
-    const animais = JSON.parse(localStorage.getItem("animais")) || [];
+    let animais = JSON.parse(localStorage.getItem("animais")) || [];
 
-    if (animais.length === 0) {
-      catalogo.innerHTML = "<p>Nenhum animal cadastrado ainda.</p>";
-    } else {
-      animais.forEach(a => {
+    function salvarAnimais() {
+      localStorage.setItem("animais", JSON.stringify(animais));
+    }
+
+    function renderCatalogo() {
+      catalogo.innerHTML = "";
+      if (animais.length === 0) {
+        catalogo.innerHTML = "<p>Nenhum animal cadastrado ainda.</p>";
+        return;
+      }
+
+      animais.forEach((a, i) => {
         const div = document.createElement("div");
         div.className = "animal";
         div.innerHTML = `
@@ -34,10 +46,49 @@
           <p><strong>Descrição:</strong> ${a.descricao}</p>
           <p><strong>Localização:</strong> ${a.localizacao}</p>
           <p><strong>Saúde:</strong> ${a.saude}</p>
+          <button onclick="editarAnimal(${i})">Editar</button>
+          <button onclick="excluirAnimal(${i})">Excluir</button>
+          <button onclick="adotarAnimal(${i})">Adotar</button>
         `;
         catalogo.appendChild(div);
       });
     }
+
+    function excluirAnimal(index) {
+      if (confirm("Tem certeza que deseja excluir este animal?")) {
+        animais.splice(index, 1);
+        salvarAnimais();
+        renderCatalogo();
+      }
+    }
+
+    function editarAnimal(index) {
+      const animal = animais[index];
+      const novoNome = prompt("Novo nome:", animal.nome);
+      const novaDesc = prompt("Nova descrição:", animal.descricao);
+      const novaLocal = prompt("Nova localização:", animal.localizacao);
+      const novaSaude = prompt("Novo estado de saúde:", animal.saude);
+      const novaImg = prompt("Nova URL da imagem (opcional):", animal.imagem);
+
+      if (novoNome && novaDesc && novaLocal && novaSaude) {
+        animais[index] = {
+          nome: novoNome,
+          descricao: novaDesc,
+          localizacao: novaLocal,
+          saude: novaSaude,
+          imagem: novaImg
+        };
+        salvarAnimais();
+        renderCatalogo();
+      }
+    }
+
+    function adotarAnimal(index) {
+      localStorage.setItem("adocaoSelecionada", JSON.stringify(animais[index]));
+      window.location.href = "formulario.html";
+    }
+
+    renderCatalogo();
   </script>
 </body>
 </html>
