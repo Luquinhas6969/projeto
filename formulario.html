@@ -2,39 +2,56 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário de Adoção</title>
   <link rel="stylesheet" href="css/geral.css">
 </head>
 <body>
   <!-- MENU -->
-<div id="menu">
-  <div><a href="index.html">Início</a></div>
-  <div><a href="catalogo.html">Animais para Adoção</a></div>
-  <div><a href="faleconosco.html">Cadastrar Animal</a></div>
-  <div><a href="ajudar.html">Como Ajudar</a></div>
-  <div><a href="sobre.html">Sobre</a></div>
-  <div><a href="contatos.html">Contato</a></div>
-</div>
+  <nav id="menu">
+    <div class="container">
+      <div class="menu-item"><a href="index.html">Início</a></div>
+      <div class="menu-item"><a href="catalogo.html">Animais para Adoção</a></div>
+      <div class="menu-item"><a href="faleconosco.html">Cadastrar Animal</a></div>
+      <div class="menu-item"><a href="ajudar.html">Como Ajudar</a></div>
+      <div class="menu-item"><a href="sobre.html">Sobre</a></div>
+      <div class="menu-item"><a href="contatos.html">Contato</a></div>
+    </div>
+  </nav>
 
-  <div id="topo">
-    <h1>Formulário de Adoção</h1>
-  </div>
+  <header id="topo">
+    <div class="container">
+      <h1 class="titulo-principal">Formulário de Adoção</h1>
+    </div>
+  </header>
 
-  <div id="formContainer">
-    <div id="animalSelecionado"></div>
+  <main class="container">
+    <div id="formContainer">
+      <section id="animalSelecionado" aria-label="Animal selecionado para adoção"></section>
 
-    <form id="formAdocao">
-      <input type="text" id="nomePessoa" placeholder="Seu Nome" required />
-      <input type="email" id="email" placeholder="Seu E-mail" required />
-      <input type="tel" id="telefone" placeholder="Telefone com DDD"  />
-      <textarea id="motivo" placeholder="Por que deseja adotar?" required></textarea>
-      <button type="submit">Enviar Pedido de Adoção</button>
-    </form>
-  </div>
+      <form id="formAdocao" aria-label="Formulário de adoção de animal">
+        <div class="form-group">
+          <input type="text" id="nomePessoa" placeholder="Seu Nome" required aria-required="true" />
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Seu E-mail" required aria-required="true" />
+        </div>
+        <div class="form-group">
+          <input type="tel" id="telefone" placeholder="Telefone com DDD" aria-label="Telefone para contato" />
+        </div>
+        <div class="form-group">
+          <textarea id="motivo" placeholder="Por que deseja adotar?" required aria-required="true"></textarea>
+        </div>
+        <button type="submit">
+          <i class="fas fa-paw"></i> Enviar Pedido de Adoção
+        </button>
+      </form>
+    </div>
+  </main>
 
   <script>
-    const animal = JSON.parse(localStorage.getItem("adocaoSelecionada"));
-    const divAnimal = document.getElementById("animalSelecionado");
+      const animal = JSON.parse(localStorage.getItem("adocaoSelecionada"));
+      const divAnimal = document.getElementById("animalSelecionado");
 
     if (animal) {
       divAnimal.innerHTML = `
