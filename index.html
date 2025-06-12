@@ -1,53 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Me Leve Para Casa</title>
-    <link rel="stylesheet" href="css/geral.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Me Leve Para Casa</title>
+  <link rel="stylesheet" href="css/geral.css" />
+  <style>
+    /* Esconde o conteúdo e o rodapé até o login */
+    #corpo, #rodape {
+      display: none;
+    }
+
+    /* Tela de login centralizada */
+    #telaLogin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    #telaLogin input {
+      margin: 8px 0;
+      padding: 8px;
+      width: 250px;
+      font-size: 16px;
+    }
+
+    #telaLogin button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    #msgErro {
+      color: red;
+      margin-top: 10px;
+      height: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div id="corpo">
-        <!-- TOPO -->
-        <div id="topo">
-            <h1>Me Leve Para Casa</h1>
-            <p>Conectando animais abandonados a lares amorosos</p>
-        </div>
 
-        <!-- MENU -->
-        <div id="menu">
-            <div><a href="#">Início</a></div>
-            <div><a href="catalogo.html">Animais para Adoção</a></div>
-            <div><a href="faleconosco.html">Cadastrar Animal</a></div>
-            <div><a href="ajudar.html">Como Ajudar</a></div>
-            <div><a href="sobre.html">Sobre</a></div>
-            <div><a href="contatos.html">Contato</a></div>
-        </div>
+  <!-- Tela de login -->
+  <div id="telaLogin">
+    <h2>Faça login para acessar o site</h2>
+    <input type="text" id="username" placeholder="Usuário" />
+    <input type="password" id="password" placeholder="Senha" />
+    <button onclick="login()">Entrar</button>
+    <p id="msgErro"></p>
+  </div>
 
-        <!-- CONTEÚDO -->
-        <div id="conteudo">
-            <div id="centro">
-                <h2>Bem-vindo ao Me Leve Para Casa</h2>
-                <p>
-                    Este site foi criado para ajudar a encontrar lares para animais
-                    abandonados. Aqui, qualquer pessoa pode cadastrar um animal que
-                    encontrou, com informações como nome (se souber), localização,
-                    estado de saúde e uma descrição.
-                </p>
-                <p>
-                    O objetivo é facilitar a adoção, conectando quem quer ajudar com
-                    quem deseja adotar.
-                </p>
-                <div class="botao-catalogo">
-                    <a href="catalogo.html">Ver Animais Disponíveis para Adoção</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- RODAPÉ -->
-        <div id="rodape">
-            <p>&copy; 2025 - Projeto Me Leve Para Casa | Feito com ❤️ para salvar vidas</p>
-        </div>
+  <!-- Conteúdo do site que ficará oculto até o login -->
+  <div id="corpo">
+    <!-- TOPO -->
+    <div id="topo">
+      <h1>Me Leve Para Casa</h1>
+      <p>Conectando animais abandonados a lares amorosos</p>
     </div>
+
+    <!-- MENU -->
+    <div id="menu">
+      <div><a href="#">Início</a></div>
+      <div><a href="catalogo.html">Animais para Adoção</a></div>
+      <div><a href="faleconosco.html">Cadastrar Animal</a></div>
+      <div><a href="ajudar.html">Como Ajudar</a></div>
+      <div><a href="sobre.html">Sobre</a></div>
+      <div><a href="contatos.html">Contato</a></div>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div id="conteudo">
+      <div id="centro">
+        <h2>Bem-vindo ao Me Leve Para Casa</h2>
+        <p>
+          Este site foi criado para ajudar a encontrar lares para animais abandonados.
+          Aqui, qualquer pessoa pode cadastrar um animal que encontrou, com informações como nome (se souber),
+          localização, estado de saúde e uma descrição.
+        </p>
+        <p>
+          O objetivo é facilitar a adoção, conectando quem quer ajudar com quem deseja adotar.
+        </p>
+        <div class="botao-catalogo">
+          <a href="catalogo.html">Ver Animais Disponíveis para Adoção</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RODAPÉ -->
+    <div id="rodape">
+      <p>&copy; 2025 - Projeto Me Leve Para Casa | Feito com ❤️ para salvar vidas</p>
+    </div>
+  </div>
+
+<script>
+  // Usuários e perfis fixos
+  const usuarios = {
+    admin: { senha: '1234', perfil: 'administrador' },
+    user: { senha: 'abcd', perfil: 'usuario' }
+  };
+
+  function login() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (usuarios[username] && usuarios[username].senha === password) {
+      // Armazena o perfil no sessionStorage para usar nas outras páginas
+      sessionStorage.setItem('perfil', usuarios[username].perfil);
+
+      // Esconde a tela de login
+      document.getElementById('telaLogin').style.display = 'none';
+
+      // Mostra o conteúdo do site e rodapé
+      document.getElementById('corpo').style.display = 'block';
+      document.getElementById('rodape').style.display = 'block';
+    } else {
+      document.getElementById('msgErro').innerText = 'Usuário ou senha inválidos!';
+    }
+  }
+
+  // Se já estiver logado (perfil salvo), pula o login ao recarregar a página
+  window.onload = () => {
+    const perfil = sessionStorage.getItem('perfil');
+    if (perfil) {
+      document.getElementById('telaLogin').style.display = 'none';
+      document.getElementById('corpo').style.display = 'block';
+      document.getElementById('rodape').style.display = 'block';
+    }
+  };
+</script>
+
 </body>
 </html>
