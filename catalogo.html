@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Animais para Adoção</title>
-  <link rel="stylesheet" href="css/geral.css">
+  <link rel="stylesheet" href="css/geral.css" />
+  <style>
+    /* Estilos básicos para animais e botões */
+    #catalogo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 30px;
+    }
+    .animal {
+      background-color: white;
+      border: 2px solid #FFA500;
+      border-radius: 15px;
+      width: 260px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .animal:hover {
+      transform: scale(1.03);
+    }
+    .animal img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .animal h3 {
+      color: #e65729;
+      margin-top: 10px;
+    }
+    .animal p {
+      font-size: 14px;
+      color: #444;
+      margin: 6px 0;
+    }
+    .animal button {
+      margin-right: 8px;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #f3c16f;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .animal button:hover {
+      background-color: #e0a84d;
+    }
+  </style>
 </head>
 <body>
-  <!-- MENU -->
-<div id="menu">
-  <div><a href="index.html">Início</a></div>
-  <div><a href="catalogo.html">Animais para Adoção</a></div>
-  <div><a href="faleconosco.html">Cadastrar Animal</a></div>
-  <div><a href="ajudar.html">Como Ajudar</a></div>
-  <div><a href="sobre.html">Sobre</a></div>
-  <div><a href="contatos.html">Contato</a></div>
-</div>
+  <!-- Menu simplificado -->
+  <div id="menu">
+    <div><a href="index.html">Início</a></div>
+    <div><a href="catalogo.html">Animais para Adoção</a></div>
+    <div><a href="faleconosco.html">Cadastrar Animal</a></div>
+    <div><a href="ajudar.html">Como Ajudar</a></div>
+    <div><a href="sobre.html">Sobre</a></div>
+    <div><a href="contatos.html">Contato</a></div>
+  </div>
 
   <div id="topo">
     <h1>Animais Disponíveis para Adoção</h1>
@@ -23,8 +73,13 @@
   <div id="catalogo"></div>
 
   <script>
-    const catalogo = document.getElementById("catalogo");
+    // Pega os animais salvos no localStorage ou inicia array vazio
     let animais = JSON.parse(localStorage.getItem("animais")) || [];
+
+    // Pega o perfil do usuário logado
+    const perfil = localStorage.getItem("perfil") || "user"; // padrão user
+
+    const catalogo = document.getElementById("catalogo");
 
     function salvarAnimais() {
       localStorage.setItem("animais", JSON.stringify(animais));
@@ -40,21 +95,37 @@
       animais.forEach((a, i) => {
         const div = document.createElement("div");
         div.className = "animal";
+
+        // Botões padrão: só Adotar para usuários normais
+        let botoes = `<button onclick="adotarAnimal(${i})">Adotar</button>`;
+
+        // Se for admin, adiciona Editar e Excluir
+        if (perfil === "admin") {
+          botoes = `
+            <button onclick="editarAnimal(${i})">Editar</button>
+            <button onclick="excluirAnimal(${i})">Excluir</button>
+            ${botoes}
+          `;
+        }
+
         div.innerHTML = `
           ${a.imagem ? `<img src="${a.imagem}" alt="Imagem do animal">` : ""}
           <h3>${a.nome}</h3>
           <p><strong>Descrição:</strong> ${a.descricao}</p>
           <p><strong>Localização:</strong> ${a.localizacao}</p>
           <p><strong>Saúde:</strong> ${a.saude}</p>
-          <button onclick="editarAnimal(${i})">Editar</button>
-          <button onclick="excluirAnimal(${i})">Excluir</button>
-          <button onclick="adotarAnimal(${i})">Adotar</button>
+          ${botoes}
         `;
+
         catalogo.appendChild(div);
       });
     }
 
     function excluirAnimal(index) {
+      if (perfil !== "admin") {
+        alert("Você não tem permissão para excluir animais.");
+        return;
+      }
       if (confirm("Tem certeza que deseja excluir este animal?")) {
         animais.splice(index, 1);
         salvarAnimais();
@@ -63,6 +134,10 @@
     }
 
     function editarAnimal(index) {
+      if (perfil !== "admin") {
+        alert("Você não tem permissão para editar animais.");
+        return;
+      }
       const animal = animais[index];
       const novoNome = prompt("Novo nome:", animal.nome);
       const novaDesc = prompt("Nova descrição:", animal.descricao);
@@ -92,46 +167,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-const perfil = localStorage.getItem("perfil");  // perfil salvo no login
-
-function renderCatalogo() {
-  catalogo.innerHTML = "";
-  if (animais.length === 0) {
-    catalogo.innerHTML = "<p>Nenhum animal cadastrado ainda.</p>";
-    return;
-  }
-
-  animais.forEach((a, i) => {
-    const div = document.createElement("div");
-    div.className = "animal";
-
-    // Botões padrão - só Adotar para usuários normais
-    let botoes = `<button onclick="adotarAnimal(${i})">Adotar</button>`;
-
-    // Se for admin, adiciona editar e excluir
-    if (perfil === "admin") {
-      botoes = `
-        <button onclick="editarAnimal(${i})">Editar</button>
-        <button onclick="excluirAnimal(${i})">Excluir</button>
-        ${botoes}
-      `;
-    }
-
-    div.innerHTML = `
-      ${a.imagem ? `<img src="${a.imagem}" alt="Imagem do animal">` : ""}
-      <h3>${a.nome}</h3>
-      <p><strong>Descrição:</strong> ${a.descricao}</p>
-      <p><strong>Localização:</strong> ${a.localizacao}</p>
-      <p><strong>Saúde:</strong> ${a.saude}</p>
-      ${botoes}
-    `;
-
-    catalogo.appendChild(div);
-  });
-}
-
