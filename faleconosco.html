@@ -11,14 +11,14 @@
 </head>
 <body>
   <!-- MENU -->
-<div id="menu">
-  <div><a href="index.html">Início</a></div>
-  <div><a href="catalogo.html">Animais para Adoção</a></div>
-  <div><a href="faleconosco.html">Cadastrar Animal</a></div>
-  <div><a href="ajudar.html">Como Ajudar</a></div>
-  <div><a href="sobre.html">Sobre</a></div>
-  <div><a href="contatos.html">Contato</a></div>
-</div>
+  <div id="menu">
+    <div><a href="index.html">Início</a></div>
+    <div><a href="catalogo.html">Animais para Adoção</a></div>
+    <div><a href="faleconosco.html">Cadastrar Animal</a></div>
+    <div><a href="ajudar.html">Como Ajudar</a></div>
+    <div><a href="sobre.html">Sobre</a></div>
+    <div><a href="contatos.html">Contato</a></div>
+  </div>
 
   <div id="topo">
     <h1>Cadastrar Animal</h1>
@@ -29,25 +29,47 @@
     <textarea id="descricao" placeholder="Descrição" required></textarea>
     <input type="text" id="localizacao" placeholder="Localização" required />
     <input type="text" id="saude" placeholder="Estado de Saúde" required />
-    <input type="url" id="imagem" placeholder="URL da Imagem (opcional)" />
+    
+    <!-- NOVO: Input de arquivo -->
+    <input type="file" id="imagem" accept="image/*" required />
+
     <button type="submit">Cadastrar</button>
   </form>
 
   <script>
     document.getElementById("formAnimal").addEventListener("submit", function(e) {
       e.preventDefault();
-      const animal = {
-        nome: document.getElementById("nome").value,
-        descricao: document.getElementById("descricao").value,
-        localizacao: document.getElementById("localizacao").value,
-        saude: document.getElementById("saude").value,
-        imagem: document.getElementById("imagem").value
+
+      const fileInput = document.getElementById("imagem");
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("Por favor, selecione uma imagem.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function(event) {
+        const base64Image = event.target.result;
+
+        const animal = {
+          nome: document.getElementById("nome").value,
+          descricao: document.getElementById("descricao").value,
+          localizacao: document.getElementById("localizacao").value,
+          saude: document.getElementById("saude").value,
+          imagem: base64Image
+        };
+
+        const lista = JSON.parse(localStorage.getItem("animais")) || [];
+        lista.push(animal);
+        localStorage.setItem("animais", JSON.stringify(lista));
+
+        alert("Animal cadastrado com sucesso!");
+        window.location.href = "catalogo.html";
       };
-      const lista = JSON.parse(localStorage.getItem("animais")) || [];
-      lista.push(animal);
-      localStorage.setItem("animais", JSON.stringify(lista));
-      alert("Animal cadastrado com sucesso!");
-      window.location.href = "catalogo.html";
+
+      reader.readAsDataURL(file); // Converte a imagem para base64
     });
   </script>
 </body>
