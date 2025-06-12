@@ -5,59 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Me Leve Para Casa</title>
   <link rel="stylesheet" href="css/geral.css" />
-  <style>
-    /* Esconde o conteúdo e o rodapé até o login */
-    #corpo, #rodape {
-      display: none;
-    }
-
-    /* Tela de login centralizada */
-    #telaLogin {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-
-    #telaLogin input {
-      margin: 8px 0;
-      padding: 8px;
-      width: 250px;
-      font-size: 16px;
-    }
-
-    #telaLogin button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      margin-top: 10px;
-    }
-
-    #msgErro {
-      color: red;
-      margin-top: 10px;
-      height: 20px;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Tela de login -->
-  <div id="telaLogin">
-    <h2>Faça login para acessar o site</h2>
-    <input type="text" id="username" placeholder="Usuário" />
-    <input type="password" id="password" placeholder="Senha" />
-    <button onclick="login()">Entrar</button>
-    <p id="msgErro"></p>
-  </div>
-
-  <!-- Conteúdo do site que ficará oculto até o login -->
+  <!-- CONTEÚDO DO SITE -->
   <div id="corpo">
     <!-- TOPO -->
     <div id="topo">
@@ -98,52 +49,6 @@
       <p>&copy; 2025 - Projeto Me Leve Para Casa | Feito com ❤️ para salvar vidas</p>
     </div>
   </div>
-
-<script>
-  // Usuários e perfis fixos
-  const usuarios = {
-    admin: { senha: '1234', perfil: 'administrador' },
-    user: { senha: 'abcd', perfil: 'usuario' }
-  };
-
-  function login() {
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value;
-
-    if (usuarios[username] && usuarios[username].senha === password) {
-      // Armazena o perfil no sessionStorage para usar nas outras páginas
-      sessionStorage.setItem('perfil', usuarios[username].perfil);
-
-      // Esconde a tela de login
-      document.getElementById('telaLogin').style.display = 'none';
-
-      // Mostra o conteúdo do site e rodapé
-      document.getElementById('corpo').style.display = 'block';
-      document.getElementById('rodape').style.display = 'block';
-    } else {
-      document.getElementById('msgErro').innerText = 'Usuário ou senha inválidos!';
-    }
-  }
-
-  // Se já estiver logado (perfil salvo), pula o login ao recarregar a página
-  window.onload = () => {
-    const perfil = sessionStorage.getItem('perfil');
-    if (perfil) {
-      document.getElementById('telaLogin').style.display = 'none';
-      document.getElementById('corpo').style.display = 'block';
-      document.getElementById('rodape').style.display = 'block';
-    }
-    // exemplo simples
-if (username === "admin" && password === "senhaadmin") {
-  localStorage.setItem("perfil", "admin");
-  window.location.href = "catalogo.html";
-} else {
-  localStorage.setItem("perfil", "user");
-  window.location.href = "catalogo.html";
-}
-
-  };
-</script>
 
 </body>
 </html>
