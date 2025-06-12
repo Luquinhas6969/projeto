@@ -5,7 +5,6 @@
   <title>Animais para Adoção</title>
   <link rel="stylesheet" href="css/geral.css" />
   <style>
-    /* Estilos básicos para animais e botões */
     #catalogo {
       display: flex;
       flex-wrap: wrap;
@@ -40,7 +39,6 @@
       margin: 6px 0;
     }
     .animal button {
-      margin-right: 8px;
       margin-top: 10px;
       padding: 8px 12px;
       background-color: #f3c16f;
@@ -56,7 +54,8 @@
   </style>
 </head>
 <body>
-  <!-- Menu simplificado -->
+
+  <!-- Menu -->
   <div id="menu">
     <div><a href="index.html">Início</a></div>
     <div><a href="catalogo.html">Animais para Adoção</a></div>
@@ -73,17 +72,9 @@
   <div id="catalogo"></div>
 
   <script>
-    // Pega os animais salvos no localStorage ou inicia array vazio
-    let animais = JSON.parse(localStorage.getItem("animais")) || [];
-
-    // Pega o perfil do usuário logado
-    const perfil = localStorage.getItem("perfil") || "user"; // padrão user
-
+    // Carrega os animais salvos no localStorage ou inicia vazio
+    const animais = JSON.parse(localStorage.getItem("animais")) || [];
     const catalogo = document.getElementById("catalogo");
-
-    function salvarAnimais() {
-      localStorage.setItem("animais", JSON.stringify(animais));
-    }
 
     function renderCatalogo() {
       catalogo.innerHTML = "";
@@ -96,74 +87,26 @@
         const div = document.createElement("div");
         div.className = "animal";
 
-        // Botões padrão: só Adotar para usuários normais
-        let botoes = `<button onclick="adotarAnimal(${i})">Adotar</button>`;
-
-        // Se for admin, adiciona Editar e Excluir
-        if (perfil === "admin") {
-          botoes = `
-            <button onclick="editarAnimal(${i})">Editar</button>
-            <button onclick="excluirAnimal(${i})">Excluir</button>
-            ${botoes}
-          `;
-        }
-
         div.innerHTML = `
           ${a.imagem ? `<img src="${a.imagem}" alt="Imagem do animal">` : ""}
           <h3>${a.nome}</h3>
           <p><strong>Descrição:</strong> ${a.descricao}</p>
           <p><strong>Localização:</strong> ${a.localizacao}</p>
           <p><strong>Saúde:</strong> ${a.saude}</p>
-          ${botoes}
+          <button onclick="adotarAnimal(${i})">Adotar</button>
         `;
 
         catalogo.appendChild(div);
       });
     }
 
-    function excluirAnimal(index) {
-      if (perfil !== "admin") {
-        alert("Você não tem permissão para excluir animais.");
-        return;
-      }
-      if (confirm("Tem certeza que deseja excluir este animal?")) {
-        animais.splice(index, 1);
-        salvarAnimais();
-        renderCatalogo();
-      }
-    }
-
-    function editarAnimal(index) {
-      if (perfil !== "admin") {
-        alert("Você não tem permissão para editar animais.");
-        return;
-      }
-      const animal = animais[index];
-      const novoNome = prompt("Novo nome:", animal.nome);
-      const novaDesc = prompt("Nova descrição:", animal.descricao);
-      const novaLocal = prompt("Nova localização:", animal.localizacao);
-      const novaSaude = prompt("Novo estado de saúde:", animal.saude);
-      const novaImg = prompt("Nova URL da imagem (opcional):", animal.imagem);
-
-      if (novoNome && novaDesc && novaLocal && novaSaude) {
-        animais[index] = {
-          nome: novoNome,
-          descricao: novaDesc,
-          localizacao: novaLocal,
-          saude: novaSaude,
-          imagem: novaImg
-        };
-        salvarAnimais();
-        renderCatalogo();
-      }
-    }
-
     function adotarAnimal(index) {
       localStorage.setItem("adocaoSelecionada", JSON.stringify(animais[index]));
-      window.location.href = "formulario.html";
+      window.location.href = "formulario.html"; // Página de adoção
     }
 
     renderCatalogo();
   </script>
+
 </body>
 </html>
