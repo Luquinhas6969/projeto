@@ -133,6 +133,15 @@
       document.getElementById('corpo').style.display = 'block';
       document.getElementById('rodape').style.display = 'block';
     }
+    // exemplo simples
+if (username === "admin" && password === "senhaadmin") {
+  localStorage.setItem("perfil", "admin");
+  window.location.href = "catalogo.html";
+} else {
+  localStorage.setItem("perfil", "user");
+  window.location.href = "catalogo.html";
+}
+
   };
 </script>
 
