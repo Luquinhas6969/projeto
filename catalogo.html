@@ -72,9 +72,13 @@
   <div id="catalogo"></div>
 
   <script>
-    // Carrega os animais salvos no localStorage ou inicia vazio
-    const animais = JSON.parse(localStorage.getItem("animais")) || [];
+    // Recupera os animais salvos ou inicia um array vazio
+    let animais = JSON.parse(localStorage.getItem("animais")) || [];
     const catalogo = document.getElementById("catalogo");
+
+    function salvarAnimais() {
+      localStorage.setItem("animais", JSON.stringify(animais));
+    }
 
     function renderCatalogo() {
       catalogo.innerHTML = "";
@@ -101,8 +105,15 @@
     }
 
     function adotarAnimal(index) {
-      localStorage.setItem("adocaoSelecionada", JSON.stringify(animais[index]));
-      window.location.href = "formulario.html"; // Página de adoção
+      const animalSelecionado = animais[index];
+      localStorage.setItem("adocaoSelecionada", JSON.stringify(animalSelecionado));
+
+      // Remove o animal da lista
+      animais.splice(index, 1);
+      salvarAnimais();
+
+      // Redireciona para o formulário
+      window.location.href = "formulario.html";
     }
 
     renderCatalogo();
