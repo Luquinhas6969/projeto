@@ -622,3 +622,25 @@ body {
     font-size: 1rem;
   }
 }
+
+.form-card {
+  margin: auto; /* Centraliza horizontalmente */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-size: 1.1rem;
+  padding: 16px 18px;
+}
+
+.form-group textarea {
+  min-height: 150px;
+}
+
+.form-container {
+  min-height: 100vh;
+  align-items: center;
+}
+
+
