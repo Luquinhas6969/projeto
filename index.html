@@ -5,49 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Me Leve Para Casa</title>
   <link rel="stylesheet" href="css/geral.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
   <!-- CONTEÚDO DO SITE -->
   <div id="corpo">
     <!-- TOPO -->
-    <div id="topo">
-      <h1>Me Leve Para Casa</h1>
-      <p>Conectando animais abandonados a lares amorosos</p>
-    </div>
+    <header id="topo">
+      <div class="container">
+        <h1 class="titulo-principal">Me Leve Para Casa</h1>
+        <p class="slogan">Conectando animais abandonados a lares amorosos</p>
+      </div>
+    </header>
 
     <!-- MENU -->
-    <div id="menu">
-      <div><a href="index.html">Início</a></div>
-      <div><a href="catalogo.html">Animais para Adoção</a></div>
-      <div><a href="faleconosco.html">Cadastrar Animal</a></div>
-      <div><a href="ajudar.html">Como Ajudar</a></div>
-      <div><a href="sobre.html">Sobre</a></div>
-      <div><a href="contatos.html">Contato</a></div>
-    </div>
+    <nav id="menu">
+      <div class="container">
+        <div class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Início</a></div>
+        <div class="menu-item"><a href="catalogo.html"><i class="fas fa-paw"></i> Animais para Adoção</a></div>
+        <div class="menu-item"><a href="faleconosco.html"><i class="fas fa-plus-circle"></i> Cadastrar Animal</a></div>
+        <div class="menu-item"><a href="ajudar.html"><i class="fas fa-hands-helping"></i> Como Ajudar</a></div>
+        <div class="menu-item"><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></div>
+        <div class="menu-item"><a href="contatos.html"><i class="fas fa-envelope"></i> Contato</a></div>
+      </div>
+    </nav>
 
     <!-- CONTEÚDO -->
-    <div id="conteudo">
-      <div id="centro">
-        <h2>Bem-vindo ao Me Leve Para Casa</h2>
-        <p>
-          Este site foi criado para ajudar a encontrar lares para animais abandonados.
-          Aqui, qualquer pessoa pode cadastrar um animal que encontrou, com informações como nome (se souber),
-          localização, estado de saúde e uma descrição.
-        </p>
-        <p>
-          O objetivo é facilitar a adoção, conectando quem quer ajudar com quem deseja adotar.
-        </p>
-        <div class="botao-catalogo">
-          <a href="catalogo.html">Ver Animais Disponíveis para Adoção</a>
+    <main id="conteudo">
+      <div class="container">
+        <div id="centro" class="card">
+          <h2 class="titulo-secao">Bem-vindo ao Me Leve Para Casa</h2>
+          <div class="texto-destaque">
+            <p>Este site foi criado para ajudar a encontrar lares para animais abandonados. Aqui, qualquer pessoa pode cadastrar um animal que encontrou, com informações como nome (se souber), localização, estado de saúde e uma descrição.</p>
+            <p>O objetivo é facilitar a adoção, conectando quem quer ajudar com quem deseja adotar.</p>
+          </div>
+          <div class="botao-destaque">
+            <a href="catalogo.html" class="botao-primario">
+              <span>Ver Animais Disponíveis para Adoção</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
 
     <!-- RODAPÉ -->
-    <div id="rodape">
-      <p>&copy; 2025 - Projeto Me Leve Para Casa | Feito com ❤️ para salvar vidas</p>
-    </div>
+    <footer id="rodape">
+      <div class="container">
+        <p>&copy; 2025 - Projeto Me Leve Para Casa | Feito com <i class="fas fa-heart"></i> para salvar vidas</p>
+        <div class="redes-sociais">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </footer>
   </div>
 
 </body>
