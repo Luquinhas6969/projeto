@@ -92,3 +92,46 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+const perfil = localStorage.getItem("perfil");  // perfil salvo no login
+
+function renderCatalogo() {
+  catalogo.innerHTML = "";
+  if (animais.length === 0) {
+    catalogo.innerHTML = "<p>Nenhum animal cadastrado ainda.</p>";
+    return;
+  }
+
+  animais.forEach((a, i) => {
+    const div = document.createElement("div");
+    div.className = "animal";
+
+    // Botões padrão - só Adotar para usuários normais
+    let botoes = `<button onclick="adotarAnimal(${i})">Adotar</button>`;
+
+    // Se for admin, adiciona editar e excluir
+    if (perfil === "admin") {
+      botoes = `
+        <button onclick="editarAnimal(${i})">Editar</button>
+        <button onclick="excluirAnimal(${i})">Excluir</button>
+        ${botoes}
+      `;
+    }
+
+    div.innerHTML = `
+      ${a.imagem ? `<img src="${a.imagem}" alt="Imagem do animal">` : ""}
+      <h3>${a.nome}</h3>
+      <p><strong>Descrição:</strong> ${a.descricao}</p>
+      <p><strong>Localização:</strong> ${a.localizacao}</p>
+      <p><strong>Saúde:</strong> ${a.saude}</p>
+      ${botoes}
+    `;
+
+    catalogo.appendChild(div);
+  });
+}
+
