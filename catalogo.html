@@ -4,104 +4,146 @@
   <meta charset="UTF-8" />
   <title>Animais para Adoção</title>
   <link rel="stylesheet" href="css/geral.css" />
-  <style>
-    #catalogo {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 40px 20px;
-      gap: 30px;
-    }
-    .animal {
-      background-color: white;
-      border: 2px solid #FFA500;
-      border-radius: 15px;
-      width: 260px;
-      padding: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .animal:hover {
-      transform: scale(1.03);
-    }
-    .animal img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-    .animal h3 {
-      color: #e65729;
-      margin-top: 10px;
-    }
-    .animal p {
-      font-size: 14px;
-      color: #444;
-      margin: 6px 0;
-    }
-    .animal button {
-      margin-top: 10px;
-      padding: 8px 12px;
-      background-color: #f3c16f;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .animal button:hover {
-      background-color: #e0a84d;
-    }
-  </style>
+  <link rel="stylesheet" href="css/catalogo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
   <!-- Menu -->
-  <div id="menu">
-    <div><a href="index.html">Início</a></div>
-    <div><a href="catalogo.html">Animais para Adoção</a></div>
-    <div><a href="faleconosco.html">Cadastrar Animal</a></div>
-    <div><a href="ajudar.html">Como Ajudar</a></div>
-    <div><a href="sobre.html">Sobre</a></div>
-    <div><a href="contatos.html">Contato</a></div>
+  <nav id="menu">
+    <div class="container">
+      <div class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Início</a></div>
+      <div class="menu-item"><a href="catalogo.html"><i class="fas fa-paw"></i> Animais para Adoção</a></div>
+      <div class="menu-item"><a href="faleconosco.html"><i class="fas fa-plus-circle"></i> Cadastrar Animal</a></div>
+      <div class="menu-item"><a href="ajudar.html"><i class="fas fa-hands-helping"></i> Como Ajudar</a></div>
+      <div class="menu-item"><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></div>
+      <div class="menu-item"><a href="contatos.html"><i class="fas fa-envelope"></i> Contato</a></div>
+    </div>
+  </nav>
+
+  <header id="topo">
+    <div class="container">
+      <h1 class="titulo-principal">Animais Disponíveis para Adoção</h1>
+      <p class="slogan">Encontre seu novo melhor amigo</p>
+    </div>
+  </header>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <button class="filtro-btn ativo" onclick="filtrarAnimais('todos')">Todos</button>
+    <button class="filtro-btn" onclick="filtrarAnimais('cachorro')">Cachorros</button>
+    <button class="filtro-btn" onclick="filtrarAnimais('gato')">Gatos</button>
+    <button class="filtro-btn" onclick="filtrarAnimais('outros')">Outros</button>
   </div>
 
-  <div id="topo">
-    <h1>Animais Disponíveis para Adoção</h1>
-  </div>
-
-  <div id="catalogo"></div>
+  <main id="catalogo"></main>
 
   <script>
     // Recupera os animais salvos ou inicia um array vazio
-    let animais = JSON.parse(localStorage.getItem("animais")) || [];
+    let animais = JSON.parse(localStorage.getItem("animais")) || [
+      // Animais de exemplo (pode remover depois)
+      {
+        nome: "Rex",
+        tipo: "cachorro",
+        descricao: "Cachorro brincalhão de 2 anos, muito carinhoso e bom com crianças.",
+        localizacao: "São Paulo - SP",
+        saude: "Vacinado e castrado",
+        imagem: "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+      },
+      {
+        nome: "Mingau",
+        tipo: "gato",
+        descricao: "Gato tranquilo de 1 ano, perfeito para apartamento.",
+        localizacao: "Rio de Janeiro - RJ",
+        saude: "Vacinado",
+        imagem: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+      },
+      {
+        nome: "Pipoca",
+        tipo: "outros",
+        descricao: "Coelho fêmea de 6 meses, muito dócil e limpa.",
+        localizacao: "Belo Horizonte - MG",
+        saude: "Saudável",
+        imagem: "https://images.unsplash.com/photo-1556838803-cc94986cb631?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+      }
+    ];
+    
     const catalogo = document.getElementById("catalogo");
 
     function salvarAnimais() {
       localStorage.setItem("animais", JSON.stringify(animais));
     }
 
-    function renderCatalogo() {
+    function renderCatalogo(filtro = 'todos') {
       catalogo.innerHTML = "";
-      if (animais.length === 0) {
-        catalogo.innerHTML = "<p>Nenhum animal cadastrado ainda.</p>";
+      
+      let animaisFiltrados = animais;
+      if (filtro !== 'todos') {
+        animaisFiltrados = animais.filter(a => a.tipo === filtro);
+      }
+      
+      if (animaisFiltrados.length === 0) {
+        catalogo.innerHTML = `
+          <div class="sem-animais">
+            <i class="fas fa-paw"></i>
+            <p>Nenhum animal encontrado. Que tal cadastrar um?</p>
+            <a href="faleconosco.html" class="botao-primario" style="margin-top: 20px; display: inline-flex;">
+              <span>Cadastrar Animal</span>
+              <i class="fas fa-plus"></i>
+            </a>
+          </div>
+        `;
         return;
       }
 
-      animais.forEach((a, i) => {
+      animaisFiltrados.forEach((a, i) => {
         const div = document.createElement("div");
         div.className = "animal";
 
         div.innerHTML = `
-          ${a.imagem ? `<img src="${a.imagem}" alt="Imagem do animal">` : ""}
-          <h3>${a.nome}</h3>
-          <p><strong>Descrição:</strong> ${a.descricao}</p>
-          <p><strong>Localização:</strong> ${a.localizacao}</p>
-          <p><strong>Saúde:</strong> ${a.saude}</p>
-          <button onclick="adotarAnimal(${i})">Adotar</button>
+          <div class="animal-img-container">
+            ${a.imagem ? `<img src="${a.imagem}" alt="${a.nome}">` : '<div style="background:#f5f5f5;height:100%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-paw" style="font-size:3rem;color:#ddd;"></i></div>'}
+            <span class="animal-tag">${getTipoAnimal(a.tipo)}</span>
+          </div>
+          <div class="animal-info">
+            <h3>${a.nome}</h3>
+            <p><strong>Descrição:</strong> ${a.descricao}</p>
+            <p><strong>Localização:</strong> ${a.localizacao}</p>
+            <p><strong>Saúde:</strong> ${a.saude}</p>
+            <div class="animal-buttons">
+              <button class="btn-adotar" onclick="adotarAnimal(${i})">
+                <i class="fas fa-heart"></i> Adotar
+              </button>
+              <button class="btn-favorito" onclick="favoritarAnimal(${i})">
+                <i class="far fa-star"></i>
+              </button>
+            </div>
+          </div>
         `;
 
         catalogo.appendChild(div);
       });
+    }
+    
+    function getTipoAnimal(tipo) {
+      const tipos = {
+        'cachorro': 'Cachorro',
+        'gato': 'Gato',
+        'outros': 'Outro'
+      };
+      return tipos[tipo] || 'Animal';
+    }
+
+    function filtrarAnimais(tipo) {
+      // Atualiza botões ativos
+      document.querySelectorAll('.filtro-btn').forEach(btn => {
+        btn.classList.remove('ativo');
+        if (btn.textContent.toLowerCase().includes(tipo)) {
+          btn.classList.add('ativo');
+        }
+      });
+      
+      renderCatalogo(tipo);
     }
 
     function adotarAnimal(index) {
@@ -115,7 +157,14 @@
       // Redireciona para o formulário
       window.location.href = "formulario.html";
     }
+    
+    function favoritarAnimal(index) {
+      // Implementação para favoritar animais
+      alert(`Animal ${animais[index].nome} adicionado aos favoritos!`);
+      // Aqui você pode adicionar a lógica para salvar nos favoritos
+    }
 
+    // Inicializa o catálogo
     renderCatalogo();
   </script>
 
