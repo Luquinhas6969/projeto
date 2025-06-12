@@ -812,3 +812,146 @@ body {
   }
 }
 
+
+/* ESTILOS ESPECÍFICOS PARA A PÁGINA "COMO AJUDAR" */
+#conteudo {
+  padding: 60px 0;
+  animation: fadeIn 0.8s ease-out;
+}
+
+#centro {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#centro h2 {
+  color: var(--cor-primaria);
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+#centro h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, var(--cor-primaria), var(--cor-secundaria));
+  border-radius: 2px;
+}
+
+#centro ul {
+  list-style: none;
+  margin: 40px 0;
+}
+
+#centro ul li {
+  background-color: var(--cor-card);
+  margin-bottom: 20px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid var(--cor-primaria);
+}
+
+#centro ul li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+#centro ul li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--cor-primaria), var(--cor-secundaria));
+}
+
+#centro ul li strong {
+  color: var(--cor-primaria);
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+#centro ul li:last-child {
+  margin-bottom: 0;
+}
+
+.chamada {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 50px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 158, 27, 0.1));
+  border-radius: 12px;
+  color: var(--cor-primaria);
+  font-weight: 600;
+  border: 2px dashed var(--cor-primaria);
+}
+
+/* ÍCONES (adicionar Font Awesome ou similar) */
+#centro ul li::after {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f138';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cor-primaria);
+  font-size: 1.5rem;
+  opacity: 0.3;
+}
+
+#centro ul li:nth-child(1)::after { content: '\f1b0'; } /* casa */
+#centro ul li:nth-child(2)::after { content: '\f064'; } /* compartilhar */
+#centro ul li:nth-child(3)::after { content: '\f4d3'; } /* dinheiro */
+#centro ul li:nth-child(4)::after { content: '\f0c0'; } /* pessoas */
+#centro ul li:nth-child(5)::after { content: '\f6ec'; } /* casa temporária */
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  #centro h2 {
+    font-size: 1.8rem;
+  }
+  
+  #centro ul li {
+    padding: 20px;
+  }
+  
+  .chamada {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #centro h2 {
+    font-size: 1.5rem;
+  }
+  
+  #centro ul li {
+    padding: 15px;
+  }
+  
+  #centro ul li strong {
+    font-size: 1rem;
+  }
+  
+  #centro ul li::after {
+    font-size: 1.2rem;
+    right: 10px;
+  }
+}
+
