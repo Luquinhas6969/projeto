@@ -3,22 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <title>Animais para Adoção</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/geral.css" />
   <link rel="stylesheet" href="css/catalogo.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    nav.menu-responsivo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #FFA500;
+      padding: 15px 20px;
+      color: white;
+      position: relative;
+      z-index: 999;
+      font-family: Arial, sans-serif;
+    }
+
+    .menu-logo a {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .menu-logo a:hover {
+      color: #fff4d1;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .menu-itens {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .menu-itens li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .menu-itens li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff4d1;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-itens {
+        flex-direction: column;
+        background-color: #FFA500;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        display: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+      }
+
+      .menu-itens.ativo {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        animation: slideDown 0.3s ease;
+      }
+
+      .menu-itens li {
+        padding: 12px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .menu-itens li:first-child {
+        border-top: none;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Menu -->
-  <nav id="menu">
-    <div class="container">
-      <div class="menu-item"><a href="index.html"><i class="fas fa-home"></i> Início</a></div>
-      <div class="menu-item"><a href="catalogo.html"><i class="fas fa-paw"></i> Animais para Adoção</a></div>
-      <div class="menu-item"><a href="faleconosco.html"><i class="fas fa-plus-circle"></i> Cadastrar Animal</a></div>
-      <div class="menu-item"><a href="ajudar.html"><i class="fas fa-hands-helping"></i> Como Ajudar</a></div>
-      <div class="menu-item"><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></div>
-      <div class="menu-item"><a href="contatos.html"><i class="fas fa-envelope"></i> Contato</a></div>
+  <!-- MENU RESPONSIVO -->
+  <nav class="menu-responsivo">
+    <div class="menu-logo">
+      <a href="index.html">Me Leve Para Casa</a>
     </div>
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="menu-itens" id="menuItens">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="catalogo.html">Animais para Adoção</a></li>
+      <li><a href="faleconosco.html">Cadastrar Animal</a></li>
+      <li><a href="ajudar.html">Como Ajudar</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="contatos.html">Contato</a></li>
+    </ul>
   </nav>
 
   <header id="topo">
@@ -39,35 +149,16 @@
   <main id="catalogo"></main>
 
   <script>
-    // Recupera os animais salvos ou inicia um array vazio
-    let animais = JSON.parse(localStorage.getItem("animais")) || [
-      // Animais de exemplo (pode remover depois)
-      {
-        nome: "Rex",
-        tipo: "cachorro",
-        descricao: "Cachorro brincalhão de 2 anos, muito carinhoso e bom com crianças.",
-        localizacao: "São Paulo - SP",
-        saude: "Vacinado e castrado",
-        imagem: "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-      },
-      {
-        nome: "Mingau",
-        tipo: "gato",
-        descricao: "Gato tranquilo de 1 ano, perfeito para apartamento.",
-        localizacao: "Rio de Janeiro - RJ",
-        saude: "Vacinado",
-        imagem: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-      },
-      {
-        nome: "Pipoca",
-        tipo: "outros",
-        descricao: "Coelho fêmea de 6 meses, muito dócil e limpa.",
-        localizacao: "Belo Horizonte - MG",
-        saude: "Saudável",
-        imagem: "https://images.unsplash.com/photo-1556838803-cc94986cb631?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-      }
-    ];
-    
+    // Menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const menuItens = document.getElementById('menuItens');
+    menuToggle.addEventListener('click', () => {
+      menuItens.classList.toggle('ativo');
+    });
+
+    // Catalogo
+    let animais = JSON.parse(localStorage.getItem("animais")) || [];
+
     const catalogo = document.getElementById("catalogo");
 
     function salvarAnimais() {
@@ -76,12 +167,12 @@
 
     function renderCatalogo(filtro = 'todos') {
       catalogo.innerHTML = "";
-      
+
       let animaisFiltrados = animais;
       if (filtro !== 'todos') {
         animaisFiltrados = animais.filter(a => a.tipo === filtro);
       }
-      
+
       if (animaisFiltrados.length === 0) {
         catalogo.innerHTML = `
           <div class="sem-animais">
@@ -124,7 +215,7 @@
         catalogo.appendChild(div);
       });
     }
-    
+
     function getTipoAnimal(tipo) {
       const tipos = {
         'cachorro': 'Cachorro',
@@ -135,14 +226,12 @@
     }
 
     function filtrarAnimais(tipo) {
-      // Atualiza botões ativos
       document.querySelectorAll('.filtro-btn').forEach(btn => {
         btn.classList.remove('ativo');
         if (btn.textContent.toLowerCase().includes(tipo)) {
           btn.classList.add('ativo');
         }
       });
-      
       renderCatalogo(tipo);
     }
 
@@ -150,21 +239,15 @@
       const animalSelecionado = animais[index];
       localStorage.setItem("adocaoSelecionada", JSON.stringify(animalSelecionado));
 
-      // Remove o animal da lista
       animais.splice(index, 1);
       salvarAnimais();
-
-      // Redireciona para o formulário
       window.location.href = "formulario.html";
     }
-    
+
     function favoritarAnimal(index) {
-      // Implementação para favoritar animais
       alert(`Animal ${animais[index].nome} adicionado aos favoritos!`);
-      // Aqui você pode adicionar a lógica para salvar nos favoritos
     }
 
-    // Inicializa o catálogo
     renderCatalogo();
   </script>
 
