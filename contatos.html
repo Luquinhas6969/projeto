@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Estilo específico da foto */
     .foto-perfil {
       width: 140px;
       height: 140px;
@@ -17,7 +16,6 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    /* Responsivo para a seção do contato */
     .contato-container {
       display: flex;
       align-items: center;
@@ -36,7 +34,6 @@
       line-height: 1.8;
     }
 
-    /* Menu responsivo */
     nav.menu-responsivo {
       display: flex;
       justify-content: space-between;
@@ -45,6 +42,8 @@
       padding: 15px 20px;
       color: white;
       position: relative;
+      z-index: 999;
+      font-family: Arial, sans-serif;
     }
 
     .menu-logo a {
@@ -58,6 +57,7 @@
       display: none;
       font-size: 1.5rem;
       cursor: pointer;
+      color: white;
     }
 
     .menu-itens {
@@ -108,13 +108,7 @@
 <body>
   <div id="corpo">
 
-    <!-- TOPO -->
-    <div id="topo">
-      <h1>Entre em Contato</h1>
-      <p>Fale comigo para sugestões, parcerias ou dúvidas</p>
-    </div>
-
-    <!-- MENU RESPONSIVO -->
+    <!-- MENU RESPONSIVO (agora está acima do topo) -->
     <nav class="menu-responsivo">
       <div class="menu-logo">
         <a href="index.html">Me Leve Para Casa</a>
@@ -132,9 +126,15 @@
       </ul>
     </nav>
 
+    <!-- TOPO -->
+    <div id="topo" class="container">
+      <h1>Entre em Contato</h1>
+      <p>Fale comigo para sugestões, parcerias ou dúvidas</p>
+    </div>
+
     <!-- CONTEÚDO -->
     <div id="conteudo">
-      <div id="centro">
+      <div id="centro" class="container">
         <div class="contato-container">
           <img src="imagens/lucas.jpg" alt="Foto de Lucas" class="foto-perfil">
 
@@ -156,9 +156,11 @@
     </div>
 
     <!-- RODAPÉ -->
-    <div id="rodape">
-      <p>&copy; 2025 - Me Leve Para Casa | Feito com ❤️ por Lucas Gabriel Borges Silva</p>
-    </div>
+    <footer id="rodape">
+      <div class="container">
+        <p>&copy; 2025 - Me Leve Para Casa | Feito com <i class="fas fa-heart" style="color: #ff6b35;"></i> por Lucas Gabriel Borges Silva</p>
+      </div>
+    </footer>
 
   </div>
 
