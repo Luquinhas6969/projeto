@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  .foto-perfil {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #FFA500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
   <meta charset="UTF-8">
   <title>Contato - Me Leve Para Casa</title>
   <link rel="stylesheet" href="css/geral.css">
@@ -26,19 +35,24 @@
     <!-- CONTEÚDO -->
     <div id="conteudo">
       <div id="centro">
-        <h2>Meus Contatos</h2>
-        <p>Você pode entrar em contato comigo pelos seguintes canais:</p>
+       <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+  <img src="imagens/lucas.jpg" alt="Foto de Lucas" class="foto-perfil">
+  
+  <div>
+    <h2>Meus Contatos</h2>
+    <p>Você pode entrar em contato comigo pelos seguintes canais:</p>
 
-        <ul style="list-style: none; padding-left: 0; font-size: 16px; line-height: 1.8;">
-          <li><strong>📧 E-mail:</strong> lucas.silva66@estudante.ifto.edu.br</li>
-          <li><strong>📱 WhatsApp:</strong> (63) 99213-5739</li>
-          <li><strong>📸 Instagram:</strong> <a href="https://instagram.com/lucasxbrgs" target="_blank">@lucasxbrgs</a></li>
-          <li><strong>🐱 GitHub (opcional):</strong> <a href="https://github.com/Luquinahs6969" target="_blank">github.com/Luquinhas6969</a></li>
-        </ul>
+    <ul style="list-style: none; padding-left: 0; font-size: 16px; line-height: 1.8;">
+      <li><strong>📧 E-mail:</strong> lucas.silva66@estudante.ifto.edu.br</li>
+      <li><strong>📱 WhatsApp:</strong> (63) 99213-5739</li>
+      <li><strong>📸 Instagram:</strong> <a href="https://instagram.com/lucasxbrgs" target="_blank">@lucasxbrgs</a></li>
+      <li><strong>🐱 GitHub (opcional):</strong> <a href="https://github.com/Luquinahs6969" target="_blank">github.com/Luquinhas6969</a></li>
+    </ul>
 
-        <p>Fico à disposição para esclarecer dúvidas, ouvir sugestões e ampliar esse projeto juntos!</p>
-      </div>
-    </div>
+    <p>Fico à disposição para esclarecer dúvidas, ouvir sugestões e ampliar esse projeto juntos!</p>
+  </div>
+</div>
+
 
     <!-- RODAPÉ -->
     <div id="rodape">
