@@ -5,79 +5,202 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário de Adoção</title>
   <link rel="stylesheet" href="css/geral.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    nav.menu-responsivo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #FFA500;
+      padding: 15px 20px;
+      color: white;
+      position: relative;
+      z-index: 999;
+      font-family: Arial, sans-serif;
+    }
+
+    .menu-logo a {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .menu-itens {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-itens li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-itens {
+        display: none;
+        flex-direction: column;
+        background-color: #FFA500;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+      }
+
+      .menu-itens.ativo {
+        display: flex;
+      }
+
+      .menu-itens li {
+        padding: 12px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .menu-itens li:first-child {
+        border-top: none;
+      }
+    }
+
+    /* Formulário */
+    #formContainer {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #FFA500;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #e69500;
+    }
+  </style>
 </head>
 <body>
-  <!-- MENU -->
-  <nav id="menu">
-    <div class="container">
-      <div class="menu-item"><a href="index.html">Início</a></div>
-      <div class="menu-item"><a href="catalogo.html">Animais para Adoção</a></div>
-      <div class="menu-item"><a href="faleconosco.html">Cadastrar Animal</a></div>
-      <div class="menu-item"><a href="ajudar.html">Como Ajudar</a></div>
-      <div class="menu-item"><a href="sobre.html">Sobre</a></div>
-      <div class="menu-item"><a href="contatos.html">Contato</a></div>
-    </div>
-  </nav>
+  <div id="corpo">
 
-  <header id="topo">
-    <div class="container">
+    <!-- MENU RESPONSIVO -->
+    <nav class="menu-responsivo">
+      <div class="menu-logo">
+        <a href="index.html">Me Leve Para Casa</a>
+      </div>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="menu-itens" id="menuItens">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="catalogo.html">Animais para Adoção</a></li>
+        <li><a href="faleconosco.html">Cadastrar Animal</a></li>
+        <li><a href="ajudar.html">Como Ajudar</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contatos.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <!-- TOPO -->
+    <header id="topo" class="container">
       <h1 class="titulo-principal">Formulário de Adoção</h1>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <div id="formContainer">
-      <section id="animalSelecionado" aria-label="Animal selecionado para adoção"></section>
+    <!-- CONTEÚDO -->
+    <main class="container">
+      <div id="formContainer">
+        <section id="animalSelecionado" aria-label="Animal selecionado para adoção"></section>
 
-      <form id="formAdocao" aria-label="Formulário de adoção de animal">
-        <div class="form-group">
-          <input type="text" id="nomePessoa" placeholder="Seu Nome" required aria-required="true" />
-        </div>
-        <div class="form-group">
-          <input type="email" id="email" placeholder="Seu E-mail" required aria-required="true" />
-        </div>
-        <div class="form-group">
-          <input type="tel" id="telefone" placeholder="Telefone com DDD" aria-label="Telefone para contato" />
-        </div>
-        <div class="form-group">
-          <textarea id="motivo" placeholder="Por que deseja adotar?" required aria-required="true"></textarea>
-        </div>
-        <button type="submit">
-          <i class="fas fa-paw"></i> Enviar Pedido de Adoção
-        </button>
-      </form>
-    </div>
-  </main>
+        <form id="formAdocao" aria-label="Formulário de adoção de animal">
+          <div class="form-group">
+            <input type="text" id="nomePessoa" placeholder="Seu Nome" required aria-required="true" />
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Seu E-mail" required aria-required="true" />
+          </div>
+          <div class="form-group">
+            <input type="tel" id="telefone" placeholder="Telefone com DDD" aria-label="Telefone para contato" />
+          </div>
+          <div class="form-group">
+            <textarea id="motivo" placeholder="Por que deseja adotar?" required aria-required="true"></textarea>
+          </div>
+          <button type="submit">
+            <i class="fas fa-paw"></i> Enviar Pedido de Adoção
+          </button>
+        </form>
+      </div>
+    </main>
 
-  <script>
+    <!-- JS -->
+    <script>
+      const menuToggle = document.getElementById('menuToggle');
+      const menuItens = document.getElementById('menuItens');
+
+      menuToggle.addEventListener('click', () => {
+        menuItens.classList.toggle('ativo');
+      });
+
       const animal = JSON.parse(localStorage.getItem("adocaoSelecionada"));
       const divAnimal = document.getElementById("animalSelecionado");
 
-    if (animal) {
-      divAnimal.innerHTML = `
-        <h2>Você quer adotar:</h2>
-        ${animal.imagem ? `<img src="${animal.imagem}" style="max-width:200px;border-radius:10px;">` : ""}
-        <p><strong>Nome:</strong> ${animal.nome}</p>
-        <p><strong>Descrição:</strong> ${animal.descricao}</p>
-      `;
-    }
-
-    document.getElementById("formAdocao").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const nome = document.getElementById("nomePessoa").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const telefone = document.getElementById("telefone").value.trim();
-      const motivo = document.getElementById("motivo").value.trim();
-
-      if (!nome || !email || !telefone || !motivo) {
-        alert("Por favor, preencha todos os campos.");
-        return;
+      if (animal) {
+        divAnimal.innerHTML = `
+          <h2>Você quer adotar:</h2>
+          ${animal.imagem ? `<img src="${animal.imagem}" style="max-width:200px;border-radius:10px;">` : ""}
+          <p><strong>Nome:</strong> ${animal.nome}</p>
+          <p><strong>Descrição:</strong> ${animal.descricao}</p>
+        `;
       }
 
-      alert("Pedido de adoção enviado com sucesso!");
-      localStorage.removeItem("adocaoSelecionada");
-      window.location.href = "catalogo.html";
-    });
-  </script>
+      document.getElementById("formAdocao").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const nome = document.getElementById("nomePessoa").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const telefone = document.getElementById("telefone").value.trim();
+        const motivo = document.getElementById("motivo").value.trim();
+
+        if (!nome || !email || !telefone || !motivo) {
+          alert("Por favor, preencha todos os campos.");
+          return;
+        }
+
+        alert("Pedido de adoção enviado com sucesso!");
+        localStorage.removeItem("adocaoSelecionada");
+        window.location.href = "catalogo.html";
+      });
+    </script>
+  </div>
 </body>
 </html>
