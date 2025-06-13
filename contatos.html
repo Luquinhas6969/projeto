@@ -4,43 +4,153 @@
   <meta charset="UTF-8">
   <title>Contato - Me Leve Para Casa</title>
   <link rel="stylesheet" href="css/geral.css">
-  <link rel="stylesheet" href="css/contatos.css"> <!-- Novo arquivo CSS para essa página -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Estilo específico da foto */
+    .foto-perfil {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #FFA500;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsivo para a seção do contato */
+    .contato-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contato-texto {
+      max-width: 600px;
+    }
+
+    ul.contatos {
+      list-style: none;
+      padding-left: 0;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* Menu responsivo */
+    nav.menu-responsivo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #FFA500;
+      padding: 15px 20px;
+      color: white;
+      position: relative;
+    }
+
+    .menu-logo a {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .menu-itens {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-itens li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-itens {
+        display: none;
+        flex-direction: column;
+        background-color: #FFA500;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+      }
+
+      .menu-itens.ativo {
+        display: flex;
+      }
+
+      .menu-itens li {
+        padding: 12px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .menu-itens li:first-child {
+        border-top: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="corpo">
+
     <!-- TOPO -->
     <div id="topo">
       <h1>Entre em Contato</h1>
       <p>Fale comigo para sugestões, parcerias ou dúvidas</p>
     </div>
 
-    <!-- MENU -->
-    <div id="menu">
-      <div><a href="index.html">Início</a></div>
-      <div><a href="catalogo.html">Animais para Adoção</a></div>
-      <div><a href="faleconosco.html">Cadastrar Animal</a></div>
-      <div><a href="ajudar.html">Como Ajudar</a></div>
-      <div><a href="sobre.html">Sobre</a></div>
-      <div><a href="contatos.html">Contato</a></div>
-    </div>
+    <!-- MENU RESPONSIVO -->
+    <nav class="menu-responsivo">
+      <div class="menu-logo">
+        <a href="index.html">Me Leve Para Casa</a>
+      </div>
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="menu-itens" id="menuItens">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="catalogo.html">Animais para Adoção</a></li>
+        <li><a href="faleconosco.html">Cadastrar Animal</a></li>
+        <li><a href="ajudar.html">Como Ajudar</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contatos.html">Contato</a></li>
+      </ul>
+    </nav>
 
     <!-- CONTEÚDO -->
     <div id="conteudo">
-      <div id="centro" class="contato-container">
-        <img src="imagens/lucas.jpg" alt="Foto de Lucas" class="foto-perfil">
-        
-        <div class="contato-texto">
-          <h2>Meus Contatos</h2>
-          <p>Você pode entrar em contato comigo pelos seguintes canais:</p>
+      <div id="centro">
+        <div class="contato-container">
+          <img src="imagens/lucas.jpg" alt="Foto de Lucas" class="foto-perfil">
 
-          <ul>
-            <li><strong>📧 E-mail:</strong> lucas.silva66@estudante.ifto.edu.br</li>
-            <li><strong>📱 WhatsApp:</strong> (63) 99213-5739</li>
-            <li><strong>📸 Instagram:</strong> <a href="https://instagram.com/lucasxbrgs" target="_blank">@lucasxbrgs</a></li>
-            <li><strong>🐱 GitHub (opcional):</strong> <a href="https://github.com/Luquinahs6969" target="_blank">github.com/Luquinhas6969</a></li>
-          </ul>
+          <div class="contato-texto">
+            <h2>Meus Contatos</h2>
+            <p>Você pode entrar em contato comigo pelos seguintes canais:</p>
 
-          <p>Fico à disposição para esclarecer dúvidas, ouvir sugestões e ampliar esse projeto juntos!</p>
+            <ul class="contatos">
+              <li><strong>📧 E-mail:</strong> lucas.silva66@estudante.ifto.edu.br</li>
+              <li><strong>📱 WhatsApp:</strong> (63) 99213-5739</li>
+              <li><strong>📸 Instagram:</strong> <a href="https://instagram.com/lucasxbrgs" target="_blank">@lucasxbrgs</a></li>
+              <li><strong>🐱 GitHub (opcional):</strong> <a href="https://github.com/Luquinahs6969" target="_blank">github.com/Luquinhas6969</a></li>
+            </ul>
+
+            <p>Fico à disposição para esclarecer dúvidas, ouvir sugestões e ampliar esse projeto juntos!</p>
+          </div>
         </div>
       </div>
     </div>
@@ -49,6 +159,17 @@
     <div id="rodape">
       <p>&copy; 2025 - Me Leve Para Casa | Feito com ❤️ por Lucas Gabriel Borges Silva</p>
     </div>
+
   </div>
+
+  <!-- JS do menu -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menuItens = document.getElementById('menuItens');
+
+    menuToggle.addEventListener('click', () => {
+      menuItens.classList.toggle('ativo');
+    });
+  </script>
 </body>
 </html>
