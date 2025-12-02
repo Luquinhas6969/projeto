@@ -186,8 +186,8 @@
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn-submit">
-            <i class="fas fa-paper-plane"></i> Cadastrar Animal
+          <button type="submit" class="btn-submit" id="btnSubmit">
+            <i class="fas fa-paper-plane"></i> <span id="btnText">Cadastrar Animal</span>
           </button>
         </div>
       </form>
@@ -195,6 +195,10 @@
   </main>
 
   <!-- JS -->
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  
   <script>
     // Mostrar nome do arquivo
     document.getElementById('imagem').addEventListener('change', function(e) {
@@ -202,9 +206,17 @@
       document.getElementById('file-name').textContent = fileName;
     });
 
+    // Variável para controlar se já está processando
+    let isProcessing = false;
+
     // Enviar formulário
-    document.getElementById("formAnimal").addEventListener("submit", function(e) {
+    document.getElementById("formAnimal").addEventListener("submit", async function(e) {
       e.preventDefault();
+
+      // Prevenir múltiplos envios
+      if (isProcessing) {
+        return;
+      }
 
       const fileInput = document.getElementById("imagem");
       const file = fileInput.files[0];
@@ -214,29 +226,65 @@
         return;
       }
 
+      // Desabilitar botão e mostrar estado de carregamento
+      const btnSubmit = document.getElementById("btnSubmit");
+      const btnText = document.getElementById("btnText");
+      isProcessing = true;
+      btnSubmit.disabled = true;
+      btnSubmit.style.opacity = "0.6";
+      btnSubmit.style.cursor = "not-allowed";
+      btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cadastrando...';
+
       const reader = new FileReader();
 
-      reader.onload = function(event) {
-        const animal = {
-          nome: document.getElementById("nome").value,
-          tipo: document.getElementById("tipo").value,
-          descricao: document.getElementById("descricao").value,
-          localizacao: document.getElementById("localizacao").value,
-          saude: document.getElementById("saude").value,
-          imagem: event.target.result
-        };
+      reader.onload = async function(event) {
+        try {
+          const animal = {
+            nome: document.getElementById("nome").value.trim(),
+            tipo: document.getElementById("tipo").value,
+            descricao: document.getElementById("descricao").value.trim(),
+            localizacao: document.getElementById("localizacao").value.trim(),
+            saude: document.getElementById("saude").value.trim(),
+            imagem_url: event.target.result // Salva como base64
+          };
 
-        const lista = JSON.parse(localStorage.getItem("animais")) || [];
-        lista.push(animal);
-        localStorage.setItem("animais", JSON.stringify(lista));
+          // Salvar no Supabase
+          await animaisDB.cadastrar(animal);
 
-        alert("Animal cadastrado com sucesso! Ele já está disponível para adoção.");
-        this.reset();
-        document.getElementById('file-name').textContent = 'Nenhum arquivo selecionado';
+          // Atualizar botão para sucesso
+          btnText.innerHTML = '<i class="fas fa-check"></i> Cadastrado!';
+          btnSubmit.style.backgroundColor = "#28a745";
 
-        setTimeout(() => {
-          window.location.href = "catalogo.html";
-        }, 2000);
+          alert("Animal cadastrado com sucesso! Ele já está disponível para adoção.");
+          
+          setTimeout(() => {
+            window.location.href = "catalogo.html";
+          }, 1500);
+        } catch (error) {
+          console.error('Erro ao cadastrar animal:', error);
+          
+          // Reabilitar botão em caso de erro
+          isProcessing = false;
+          btnSubmit.disabled = false;
+          btnSubmit.style.opacity = "1";
+          btnSubmit.style.cursor = "pointer";
+          btnSubmit.style.backgroundColor = "";
+          btnText.innerHTML = '<i class="fas fa-paper-plane"></i> Cadastrar Animal';
+          
+          alert("Erro ao cadastrar animal. Por favor, tente novamente.");
+        }
+      };
+
+      reader.onerror = function() {
+        // Reabilitar botão em caso de erro na leitura do arquivo
+        isProcessing = false;
+        btnSubmit.disabled = false;
+        btnSubmit.style.opacity = "1";
+        btnSubmit.style.cursor = "pointer";
+        btnSubmit.style.backgroundColor = "";
+        btnText.innerHTML = '<i class="fas fa-paper-plane"></i> Cadastrar Animal';
+        
+        alert("Erro ao ler a imagem. Por favor, tente novamente.");
       };
 
       reader.readAsDataURL(file);

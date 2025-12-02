@@ -156,14 +156,18 @@
           <div class="form-group">
             <textarea id="motivo" placeholder="Por que deseja adotar?" required aria-required="true"></textarea>
           </div>
-          <button type="submit">
-            <i class="fas fa-paw"></i> Enviar Pedido de Adoção
+          <button type="submit" id="btnSubmitAdocao">
+            <i class="fas fa-paw"></i> <span id="btnTextAdocao">Enviar Pedido de Adoção</span>
           </button>
         </form>
       </div>
     </main>
 
     <!-- JS -->
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+
     <script>
       const menuToggle = document.getElementById('menuToggle');
       const menuItens = document.getElementById('menuItens');
@@ -178,27 +182,90 @@
       if (animal) {
         divAnimal.innerHTML = `
           <h2>Você quer adotar:</h2>
-          ${animal.imagem ? `<img src="${animal.imagem}" style="max-width:200px;border-radius:10px;">` : ""}
+          ${animal.imagem_url ? `<img src="${animal.imagem_url}" style="max-width:200px;border-radius:10px;">` : ""}
           <p><strong>Nome:</strong> ${animal.nome}</p>
           <p><strong>Descrição:</strong> ${animal.descricao}</p>
         `;
+      } else {
+        divAnimal.innerHTML = `
+          <div style="padding:20px;background:#fff3cd;border-radius:8px;margin-bottom:20px;">
+            <p><i class="fas fa-exclamation-triangle"></i> Nenhum animal selecionado. Por favor, <a href="catalogo.html">volte ao catálogo</a> e selecione um animal para adoção.</p>
+          </div>
+        `;
       }
 
-      document.getElementById("formAdocao").addEventListener("submit", function (e) {
+      // Variável para controlar se já está processando
+      let isProcessingAdocao = false;
+
+      document.getElementById("formAdocao").addEventListener("submit", async function (e) {
         e.preventDefault();
+        
+        // Prevenir múltiplos envios
+        if (isProcessingAdocao) {
+          return;
+        }
+        
+        if (!animal || !animal.id) {
+          alert("Nenhum animal selecionado. Por favor, selecione um animal no catálogo.");
+          window.location.href = "catalogo.html";
+          return;
+        }
+
         const nome = document.getElementById("nomePessoa").value.trim();
         const email = document.getElementById("email").value.trim();
         const telefone = document.getElementById("telefone").value.trim();
         const motivo = document.getElementById("motivo").value.trim();
 
-        if (!nome || !email || !telefone || !motivo) {
-          alert("Por favor, preencha todos os campos.");
+        if (!nome || !email || !motivo) {
+          alert("Por favor, preencha todos os campos obrigatórios.");
           return;
         }
 
-        alert("Pedido de adoção enviado com sucesso!");
-        localStorage.removeItem("adocaoSelecionada");
-        window.location.href = "catalogo.html";
+        // Desabilitar botão e mostrar estado de carregamento
+        const btnSubmit = document.getElementById("btnSubmitAdocao");
+        const btnText = document.getElementById("btnTextAdocao");
+        isProcessingAdocao = true;
+        btnSubmit.disabled = true;
+        btnSubmit.style.opacity = "0.6";
+        btnSubmit.style.cursor = "not-allowed";
+        btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+        try {
+          // Salvar pedido de adoção no Supabase
+          await adocoesDB.cadastrar({
+            animal_id: animal.id,
+            nome_pessoa: nome,
+            email: email,
+            telefone: telefone || null,
+            motivo: motivo
+          });
+
+          // Remover animal do catálogo (marcar como adotado)
+          await animaisDB.remover(animal.id);
+
+          // Atualizar botão para sucesso
+          btnText.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+          btnSubmit.style.backgroundColor = "#28a745";
+
+          alert("Pedido de adoção enviado com sucesso! O animal foi removido do catálogo.");
+          localStorage.removeItem("adocaoSelecionada");
+          
+          setTimeout(() => {
+            window.location.href = "catalogo.html";
+          }, 1500);
+        } catch (error) {
+          console.error('Erro ao enviar pedido de adoção:', error);
+          
+          // Reabilitar botão em caso de erro
+          isProcessingAdocao = false;
+          btnSubmit.disabled = false;
+          btnSubmit.style.opacity = "1";
+          btnSubmit.style.cursor = "pointer";
+          btnSubmit.style.backgroundColor = "";
+          btnText.innerHTML = '<i class="fas fa-paw"></i> Enviar Pedido de Adoção';
+          
+          alert("Erro ao enviar pedido de adoção. Por favor, tente novamente.");
+        }
       });
     </script>
   </div>
